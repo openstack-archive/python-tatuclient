@@ -19,8 +19,8 @@ Python bindings to the Tatu API
     :alt: Downloads
 
 This is a client library for Tatu built on the Tatu API. It
-provides a Python API (the ``tatuclient`` module) and a command-line tool
-(``tatu``).
+provides a Python API (the ``tatuclient`` module) and a plugin for
+OpenStack's command-line tool (``openstack``).
 
 Development takes place via the usual OpenStack processes as outlined in the
 `developer guide <https://docs.openstack.org/infra/manual/developers.html>`_.  The master

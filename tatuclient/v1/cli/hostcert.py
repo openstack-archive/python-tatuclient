@@ -1,4 +1,4 @@
-#   Copyright 2017 Huawei, Inc. All rights reserved.
+#   Copyright 2018 Huawei, Inc. All rights reserved.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License"); you may
 #   not use this file except in compliance with the License. You may obtain
@@ -23,22 +23,6 @@ from tatuclient.v1.utils import get_all
 
 
 LOG = logging.getLogger(__name__)
-'host_id': host.host_id,
-'fingerprint': host.fingerprint,
-'auth_id': host.auth_id,
-'cert': host.cert,
-item = {
-    'host_id': host.host_id,
-    'fingerprint': host.fingerprint,
-    'auth_id': host.auth_id,
-    'cert': host.cert,
-    'hostname': host.hostname,
-}
-if CONF.tatu.use_pat_bastions:
-    item['pat_bastions'] = ','.join(
-        '{}:{}'.format(t[1], t[0]) for t in
-        get_port_ip_tuples(host.host_id, 22))
-    item['srv_url'] = get_srv_url(host.hostname, host.auth_id)
 
 _columns = ['host_id', 'srv_url', 'pat_bastions', 'fingerprint', 'cert']
 _names = ['Instance ID', 'SRV URL', 'PAT Bastions', 'Fingerprint', 'SSH Certificate']
@@ -64,12 +48,13 @@ class ShowHostCertCommand(command.ShowOne):
 
     def get_parser(self, prog_name):
         parser = super(ShowHostCertCommand, self).get_parser(prog_name)
-        parser.add_argument('serial', help="Serial Number")
+        parser.add_argument('host_id', help="Instance ID")
+        parser.add_argument('fingerprint', help="Public Key Fingerprint")
         common.add_all_common_options(parser)
         return parser
 
     def take_action(self, parsed_args):
         client = self.app.client_manager.ssh
         common.set_all_common_headers(client, parsed_args)
-        data = client.hostcert.get(parsed_args.serial)
+        data = client.hostcert.get(parsed_args.host_id, parsed_args.fingerprint)
         return _names, utils.get_item_properties(data, _columns)

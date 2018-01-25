@@ -21,8 +21,8 @@ from osc_lib.command import command
 import six
 
 from tatuclient import utils
-from tatuclient.v2.cli import common
-from tatuclient.v2.utils import get_all
+from tatuclient.v1.cli import common
+from tatuclient.v1.utils import get_all
 
 
 LOG = logging.getLogger(__name__)
@@ -43,7 +43,7 @@ def _has_project_id(data):
     return False
 
 
-class ListRecordSetsCommand(command.Lister):
+class ListCACommand(command.Lister):
     """List recordsets"""
 
     columns = ['id', 'name', 'type', 'records', 'status', 'action']
@@ -72,7 +72,7 @@ class ListRecordSetsCommand(command.Lister):
         return parser
 
     def take_action(self, parsed_args):
-        client = self.app.client_manager.dns
+        client = self.app.client_manager.ssh
         common.set_all_common_headers(client, parsed_args)
 
         criterion = {}
@@ -130,7 +130,7 @@ class ShowRecordSetCommand(command.ShowOne):
         return parser
 
     def take_action(self, parsed_args):
-        client = self.app.client_manager.dns
+        client = self.app.client_manager.ssh
         common.set_all_common_headers(client, parsed_args)
         data = client.recordsets.get(parsed_args.zone_id, parsed_args.id)
 
@@ -166,7 +166,7 @@ class CreateRecordSetCommand(command.ShowOne):
         return parser
 
     def take_action(self, parsed_args):
-        client = self.app.client_manager.dns
+        client = self.app.client_manager.ssh
         common.set_all_common_headers(client, parsed_args)
 
         all_records = parsed_args.record or parsed_args.records
@@ -223,7 +223,7 @@ class SetRecordSetCommand(command.ShowOne):
         if parsed_args.records:
             data['records'] = parsed_args.records
 
-        client = self.app.client_manager.dns
+        client = self.app.client_manager.ssh
         common.set_all_common_headers(client, parsed_args)
 
         updated = client.recordsets.update(
@@ -250,7 +250,7 @@ class DeleteRecordSetCommand(command.ShowOne):
         return parser
 
     def take_action(self, parsed_args):
-        client = self.app.client_manager.dns
+        client = self.app.client_manager.ssh
         common.set_all_common_headers(client, parsed_args)
         data = client.recordsets.delete(parsed_args.zone_id, parsed_args.id)
 

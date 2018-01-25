@@ -1,5 +1,5 @@
 ==================================
- python-designateclient Reference
+ python-tatuclient Reference
 ==================================
 
 .. toctree::

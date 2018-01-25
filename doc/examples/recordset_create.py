@@ -1,7 +1,7 @@
 from __future__ import print_function
 import logging
 
-from tatuclient.v2 import client
+from tatuclient.v1 import client
 from tatuclient import exceptions
 from tatuclient import shell
 

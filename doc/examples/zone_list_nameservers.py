@@ -1,7 +1,7 @@
 import logging
 import uuid
 
-from tatuclient.v2 import client
+from tatuclient.v1 import client
 from tatuclient import shell
 from tatuclient import utils
 

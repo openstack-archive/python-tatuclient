@@ -1,14 +1,14 @@
 .. _bindings:
 
-===========================
-Python Bindings - v1 and v2
-===========================
+====================
+Python Bindings - v1
+====================
 
-The python-designateclient package comes with python bindings for both versions
-of the Designate API: v1 and v2. These can be used to interact with the Designate
-API from any python program.
+The python-tatuclient package comes with python bindings for version v1 of the
+Tatu API. These can be used to interact with the Tatu API from any python
+program.
 
-Introduction - Bindings v2
+Introduction - Bindings v1
 ==========================
 
 To view examples of usage please checkout the *doc/examples* folder, basic usage is:
@@ -16,8 +16,8 @@ To view examples of usage please checkout the *doc/examples* folder, basic usage
 .. code-block:: python
 
    #!/usr/bin/env python
-   from designateclient.v2 import client
-   from designateclient import shell
+   from tatuclient.v1 import client
+   from tatuclient import shell
 
    from keystoneauth1.identity import generic
    from keystoneauth1 import session as keystone_session
@@ -49,7 +49,7 @@ the bindings.
 
    #!/usr/bin/env python
    from __future__ import print_function
-   from designateclient.v1 import Client
+   from tatuclient.v1 import Client
 
 
    # Create an instance of the client, providing the necessary credentials
@@ -80,7 +80,7 @@ And the output this program might produce:
 Authentication
 ==============
 
-Designate supports either Keystone authentication, or no authentication at all.
+Tatu supports either Keystone authentication, or no authentication at all.
 
 Keystone Authentication
 -----------------------
@@ -94,7 +94,7 @@ Sessions. For more information on keystoneauth API, see `Using Sessions`_.
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
+   from tatuclient.v1 import Client
 
    from keystoneauth1.identity import generic
    from keystoneauth1 import session as keystone_session
@@ -118,14 +118,14 @@ Sessions. For more information on keystoneauth API, see `Using Sessions`_.
 Below is a sample of standard authentication with keystone, but also explicitly
 providing the endpoint to use:
 
-.. note:: This is useful when a development Designate instances authenticates
+.. note:: This is useful when a development Tatu instances authenticates
           against a production Keystone.
 
 .. code-block:: python
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
+   from tatuclient.v1 import Client
 
    from keystoneauth1.identity import generic
    from keystoneauth1 import session as keystone_session
@@ -151,13 +151,13 @@ providing the endpoint to use:
 No Authentication
 -----------------
 
-Below is a sample of interaction with a non authenticated designate:
+Below is a sample of interaction with a non authenticated tatu:
 
 .. code-block:: python
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
+   from tatuclient.v1 import Client
 
    # Create an instance of the client, providing the endpoint directly
    client = Client(
@@ -192,7 +192,7 @@ Listing Domains
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
+   from tatuclient.v1 import Client
 
    # Create an instance of the client
    client = Client(
@@ -209,7 +209,7 @@ Fetching a Domain by ID
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
+   from tatuclient.v1 import Client
 
    # Create an instance of the client
    client = Client(
@@ -229,8 +229,8 @@ Creating a Domain
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
-   from designateclient.v1.domains import Domain
+   from tatuclient.v1 import Client
+   from tatuclient.v1.domains import Domain
 
    # Create an instance of the client
    client = Client(
@@ -250,7 +250,7 @@ Updating a Domain
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
+   from tatuclient.v1 import Client
 
    # Create an instance of the client
    client = Client(
@@ -275,7 +275,7 @@ Deleting a Domain
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
+   from tatuclient.v1 import Client
 
    # Create an instance of the client
    client = Client(
@@ -317,7 +317,7 @@ Listing Records
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
+   from tatuclient.v1 import Client
 
    # Create an instance of the client
    client = Client(
@@ -336,7 +336,7 @@ Fetching a Record by ID
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
+   from tatuclient.v1 import Client
 
    # Create an instance of the client
    client = Client(
@@ -357,8 +357,8 @@ Creating a Record
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
-   from designateclient.v1.records import Record
+   from tatuclient.v1 import Client
+   from tatuclient.v1.records import Record
 
    # Create an instance of the client
    client = Client(
@@ -380,7 +380,7 @@ Updating a Record
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
+   from tatuclient.v1 import Client
 
    # Create an instance of the client
    client = Client(
@@ -406,7 +406,7 @@ Deleting a Record
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
+   from tatuclient.v1 import Client
 
    # Create an instance of the client
    client = Client(
@@ -443,7 +443,7 @@ Listing Servers
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
+   from tatuclient.v1 import Client
 
    # Create an instance of the client
    client = Client(
@@ -460,7 +460,7 @@ Fetching a Server by ID
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
+   from tatuclient.v1 import Client
 
    # Create an instance of the client
    client = Client(
@@ -480,8 +480,8 @@ Creating a Server
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
-   from designateclient.v1.servers import Server
+   from tatuclient.v1 import Client
+   from tatuclient.v1.servers import Server
 
    # Create an instance of the client
    client = Client(
@@ -501,7 +501,7 @@ Updating a Server
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
+   from tatuclient.v1 import Client
 
    # Create an instance of the client
    client = Client(
@@ -526,7 +526,7 @@ Deleting a Server
 
    #!/usr/bin/env python
 
-   from designateclient.v1 import Client
+   from tatuclient.v1 import Client
 
    # Create an instance of the client
    client = Client(

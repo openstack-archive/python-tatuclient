@@ -11,7 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Designate Release Notes documentation build configuration file, created by
+# Tatu Release Notes documentation build configuration file, created by
 # sphinx-quickstart on Tue Nov  3 17:40:50 2015.
 #
 # This file is execfile()d with the current directory set to its
@@ -61,8 +61,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Designate Client Release Notes'
-copyright = u'2015, Designate Developers'
+project = u'Tatu Client Release Notes'
+copyright = u'2015, Tatu Developers'
 
 # Release notes are version independent.
 # The full version, including alpha/beta/rc tags.
@@ -191,7 +191,7 @@ html_static_path = ['_static']
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'DesignateClientReleaseNotesdoc'
+htmlhelp_basename = 'TatuClientReleaseNotesdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -211,10 +211,10 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ('index', 'DesignateClientReleaseNotes.tex',
-     u'Designate Client Release Notes '
+    ('index', 'TatuClientReleaseNotes.tex',
+     u'Tatu Client Release Notes '
      u'Documentation',
-     u'Designate Developers', 'manual'),
+     u'Tatu Developers', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -243,8 +243,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'designateclientreleasenotes', u'Designate Client Release Notes '
-     u'Documentation', [u'Designate Developers'], 1)
+    ('index', 'tatuclientreleasenotes', u'Tatu Client Release Notes '
+     u'Documentation', [u'Tatu Developers'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -257,10 +257,10 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'DesignateClientReleaseNotes',
-     u'Designate Client Release Notes '
+    ('index', 'TatuClientReleaseNotes',
+     u'Tatu Client Release Notes '
      u'Documentation',
-     u'Designate Developers', 'DesignateClientReleaseNotes',
+     u'Tatu Developers', 'TatuClientReleaseNotes',
      'One line description of project.',
      'Miscellaneous'),
 ]

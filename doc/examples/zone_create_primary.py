@@ -4,7 +4,7 @@ import logging
 
 from tatuclient import exceptions
 from tatuclient import shell
-from tatuclient.v2 import client
+from tatuclient.v1 import client
 
 from keystoneauth1.identity import generic
 from keystoneauth1 import session as keystone_session

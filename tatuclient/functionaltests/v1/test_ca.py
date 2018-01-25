@@ -15,14 +15,14 @@ limitations under the License.
 """
 from tempest.lib.exceptions import CommandFailed
 
-from tatuclient.functionaltests.base import BaseDesignateTest
+from tatuclient.functionaltests.base import BaseTatuTest
 from tatuclient.functionaltests.datagen import random_a_recordset_name
 from tatuclient.functionaltests.datagen import random_zone_name
-from tatuclient.functionaltests.v2.fixtures import RecordsetFixture
-from tatuclient.functionaltests.v2.fixtures import ZoneFixture
+from tatuclient.functionaltests.v1.fixtures import RecordsetFixture
+from tatuclient.functionaltests.v1.fixtures import ZoneFixture
 
 
-class TestRecordset(BaseDesignateTest):
+class TestRecordset(BaseTatuTest):
 
     def setUp(self):
         super(TestRecordset, self).setUp()
@@ -98,7 +98,7 @@ class TestRecordset(BaseDesignateTest):
         self.assertEqual(rset.ttl, 'None')
 
 
-class TestRecordsetNegative(BaseDesignateTest):
+class TestRecordsetNegative(BaseTatuTest):
 
     def test_invalid_option_on_recordset_create(self):
         cmd = 'recordset create de47d30b-41c5-4e38-b2c5-e0b908e19ec7 ' \

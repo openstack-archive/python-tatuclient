@@ -18,7 +18,7 @@ from keystoneauth1 import adapter
 from keystoneauth1 import session as keystone_session
 
 from tatuclient.tests.base import TestCase
-from tatuclient.v2.client import Client
+from tatuclient.v1.client import Client
 
 
 class TestClient(TestCase):

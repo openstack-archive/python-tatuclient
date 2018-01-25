@@ -1,5 +1,5 @@
 ================================
- Designate Client Release Notes
+ Tatu Client Release Notes
 ================================
 
 .. toctree::

@@ -33,10 +33,10 @@ copyright = u'2012, Managed I.T. 2013-2014, Hewlett-Packard Development Company,
 # built documents.
 #
 # The short X.Y version.
-from tatuclient.version import version_info as designateclient_version
-version = designateclient_version.canonical_version_string()
+from tatuclient.version import version_info as tatuclient_version
+version = tatuclient_version.canonical_version_string()
 # The full version, including alpha/beta/rc tags.
-release = designateclient_version.version_string_with_vcs()
+release = tatuclient_version.version_string_with_vcs()
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -52,4 +52,4 @@ modindex_common_prefix = ['tatuclient']
 # -- Options for HTML output ---------------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'designateclientdoc'
+htmlhelp_basename = 'tatuclientdoc'

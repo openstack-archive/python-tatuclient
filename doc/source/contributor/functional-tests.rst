@@ -3,15 +3,15 @@ Functional Tests
 ================
 
 The functional tests invoke the client executable to see that it actually works
-with a running Designate. WARNING: these tests will create and delete zones,
-recordsets, and other resources in Designate.
+with a running Tatu. WARNING: these tests will create and delete zones,
+recordsets, and other resources in Tatu.
 
 Installation
 ------------
 
 .. code-block:: shell-session
 
-    cd python-designateclient
+    cd python-tatuclient
     pip install python-openstackclient
     pip install -r requirements.txt -r test-requirements.txt
     pip install -e .
@@ -26,16 +26,16 @@ config file for the test.
 
     export TEMPEST_CONFIG=tempest.conf
 
-The tests will use Keystone to grab the Designate endpoint to test against.
+The tests will use Keystone to grab the Tatu endpoint to test against.
 They need at least three users (two regular users, and one admin) for all the
 tests to run.
 
 .. code-block:: shell-session
 
     [identity]
-    uri = http://localhost:5000/v2.0
+    uri = http://localhost:5000/v1.0
     uri_v3 = http://localhost:5000/v3
-    auth_version = v2
+    auth_version = v1
     region = RegionOne
 
     username = demo
@@ -53,9 +53,9 @@ tests to run.
     admin_password = password
     admin_domain_name = Default
 
-    [designateclient]
+    [tatuclient]
     # the directory containing the openstack executable
-    directory=/root/python-designateclient/.venv/bin
+    directory=/root/python-tatuclient/.venv/bin
 
 Running the tests
 -----------------

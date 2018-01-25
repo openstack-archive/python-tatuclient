@@ -60,7 +60,7 @@ def get_all(function, criterion=None, args=None):
     :param function: Function to be called to get data
     :param criterion: dict of filters to be applied
     :param args: arguments to be given to the function
-    :return: DesignateList()
+    :return: TatuList()
     """
 
     criterion = criterion or {}

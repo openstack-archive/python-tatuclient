@@ -20,7 +20,7 @@ ChangeLog
 doc/source/reference/api/*
 doc/build/*
 dist
-designateclient/versioninfo
+tatuclient/versioninfo
 .testrepository
 *.log
 .idea/

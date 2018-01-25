@@ -16,11 +16,11 @@
 from oslo_utils import uuidutils
 import six
 
-from tatuclient.v2.base import V2Controller
-from tatuclient.v2 import utils as v2_utils
+from tatuclient.v1.base import V1Controller
+from tatuclient.v1 import utils as v1_utils
 
 
-class RecordSetController(V2Controller):
+class RecordSetController(V1Controller):
     def _canonicalize_record_name(self, zone, name):
         zone_info = None
 
@@ -66,7 +66,7 @@ class RecordSetController(V2Controller):
         return self._post(url, data=data)
 
     def list(self, zone, criterion=None, marker=None, limit=None):
-        zone = v2_utils.resolve_by_name(self.client.zones.list, zone)
+        zone = v1_utils.resolve_by_name(self.client.zones.list, zone)
 
         url = self.build_url(
             '/zones/%s/recordsets' % zone,
@@ -81,8 +81,8 @@ class RecordSetController(V2Controller):
         return self._get(url, response_key='recordsets')
 
     def get(self, zone, recordset):
-        zone = v2_utils.resolve_by_name(self.client.zones.list, zone)
-        recordset = v2_utils.resolve_by_name(self.list, recordset, zone)
+        zone = v1_utils.resolve_by_name(self.client.zones.list, zone)
+        recordset = v1_utils.resolve_by_name(self.list, recordset, zone)
 
         url = self.build_url('/zones/%s/recordsets/%s' % (
                              zone, recordset))
@@ -90,16 +90,16 @@ class RecordSetController(V2Controller):
         return self._get(url)
 
     def update(self, zone, recordset, values):
-        zone = v2_utils.resolve_by_name(self.client.zones.list, zone)
-        recordset = v2_utils.resolve_by_name(self.list, recordset, zone)
+        zone = v1_utils.resolve_by_name(self.client.zones.list, zone)
+        recordset = v1_utils.resolve_by_name(self.list, recordset, zone)
 
         url = '/zones/%s/recordsets/%s' % (zone, recordset)
 
         return self._put(url, data=values)
 
     def delete(self, zone, recordset):
-        zone = v2_utils.resolve_by_name(self.client.zones.list, zone)
-        recordset = v2_utils.resolve_by_name(self.list, recordset, zone)
+        zone = v1_utils.resolve_by_name(self.client.zones.list, zone)
+        recordset = v1_utils.resolve_by_name(self.list, recordset, zone)
 
         url = '/zones/%s/recordsets/%s' % (zone, recordset)
 

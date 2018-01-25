@@ -15,22 +15,22 @@
 # under the License.
 
 from tatuclient import client
-from tatuclient.v2.utils import parse_query_from_url
+from tatuclient.v1.utils import parse_query_from_url
 
 
-class DesignateList(list):
+class TatuList(list):
 
     next_link_criterion = {}
     next_page = False
 
 
-class V2Controller(client.Controller):
+class V1Controller(client.Controller):
 
     def _get(self, url, response_key=None, **kwargs):
         resp, body = self.client.session.get(url, **kwargs)
 
         if response_key is not None:
-            data = DesignateList()
+            data = TatuList()
             data.extend(body[response_key])
 
             if 'next' in body.get('links', {}):

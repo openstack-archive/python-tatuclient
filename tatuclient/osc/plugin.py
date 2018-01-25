@@ -21,12 +21,12 @@ from osc_lib import utils as oscutils
 from tatuclient import shell
 
 
-DEFAULT_API_VERSION = '2'
+DEFAULT_API_VERSION = '1'
 
 API_NAME = 'ssh'
 API_VERSION_OPTION = 'os_ssh_api_version'
 API_VERSIONS = {
-    '1': 'tatuclient.v2.client.Client',
+    '1': 'tatuclient.v1.client.Client',
 }
 
 

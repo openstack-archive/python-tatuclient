@@ -39,13 +39,13 @@ def env(*vars, **kwargs):
     return kwargs.get('default', '')
 
 
-class DesignateShell(App):
+class TatuShell(App):
     CONSOLE_MESSAGE_FORMAT = '%(levelname)s: %(message)s'
     DEFAULT_VERBOSE_LEVEL = 0
 
     def __init__(self):
-        super(DesignateShell, self).__init__(
-            description='Designate Client',
+        super(TatuShell, self).__init__(
+            description='Tatu Client',
             version=version.version_string(),
             command_manager=CommandManager('tatuclient.cli'),
         )
@@ -53,7 +53,7 @@ class DesignateShell(App):
         self.log = logging.getLogger(__name__)
 
     def build_option_parser(self, description, version):
-        parser = super(DesignateShell, self).build_option_parser(
+        parser = super(TatuShell, self).build_option_parser(
             description, version)
 
         parser.add_argument('--os-username',
@@ -138,12 +138,12 @@ class DesignateShell(App):
                                  'Defaults to env[OS_SERVICE_TOKEN].')
 
         parser.add_argument('--os-endpoint',
-                            default=env('OS_DNS_ENDPOINT',
+                            default=env('OS_SSH_ENDPOINT',
                                         'OS_SERVICE_ENDPOINT'),
                             help='Specify an endpoint to use instead of '
                                  'retrieving one from the service catalog '
                                  '(via authentication). '
-                                 'Defaults to env[OS_DNS_ENDPOINT].')
+                                 'Defaults to env[OS_SSH_ENDPOINT].')
 
         parser.add_argument('--os-endpoint-type',
                             default=env('OS_ENDPOINT_TYPE',
@@ -151,9 +151,9 @@ class DesignateShell(App):
                             help='Defaults to env[OS_ENDPOINT_TYPE].')
 
         parser.add_argument('--os-service-type',
-                            default=env('OS_DNS_SERVICE_TYPE', default='dns'),
-                            help=("Defaults to env[OS_DNS_SERVICE_TYPE], or "
-                                  "'dns'."))
+                            default=env('OS_SSH_SERVICE_TYPE', default='ssh'),
+                            help=("Defaults to env[OS_SSH_SERVICE_TYPE], or "
+                                  "'ssh'."))
 
         parser.add_argument('--os-cacert',
                             default=env('OS_CACERT'),
@@ -166,10 +166,6 @@ class DesignateShell(App):
         parser.add_argument('--all-tenants', action='store_true',
                             help="Allows to list all domains from all "
                             "tenants.")
-
-        parser.add_argument('--edit-managed', action='store_true',
-                            help='Allows to edit records that are marked as '
-                            'managed.')
 
         return parser
 
@@ -184,7 +180,7 @@ class DesignateShell(App):
             # Set this here so cliff.app.configure_logging() can work
             self.options.verbose_level = 3
 
-        super(DesignateShell, self).configure_logging()
+        super(TatuShell, self).configure_logging()
         root_logger = logging.getLogger('')
 
         # Requests logs some stuff at INFO that we don't want
@@ -218,7 +214,7 @@ class DesignateShell(App):
             self.dump_stack_trace = True
 
     def initialize_app(self, argv):
-        super(DesignateShell, self).initialize_app(argv)
+        super(TatuShell, self).initialize_app(argv)
         self.session = utils.get_session(
             auth_url=self.options.os_auth_url,
             endpoint=self.options.os_endpoint,
@@ -241,7 +237,7 @@ class DesignateShell(App):
 
     def run(self, argv):
         try:
-            return super(DesignateShell, self).run(argv)
+            return super(TatuShell, self).run(argv)
         except Exception as e:
             if not logging.getLogger('').handlers:
                 logging.basicConfig()

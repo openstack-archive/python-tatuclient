@@ -17,28 +17,28 @@
 .. ###################################################
 
 ===========================================
-DNS service (designate) command-line client
+SSH service (tatu) command-line client
 ===========================================
 
-The designate client is the command-line interface (CLI) for
-the DNS service (designate) API and its extensions.
+The tatu client is the command-line interface (CLI) for
+the SSH service (tatu) API and its extensions.
 
-This chapter documents :command:`designate` version ``2.6.0``.
+This chapter documents :command:`tatu` version ``2.6.0``.
 
-For help on a specific :command:`designate` command, enter:
+For help on a specific :command:`tatu` command, enter:
 
 .. code-block:: console
 
-   $ designate help COMMAND
+   $ tatu help COMMAND
 
-.. _designate_command_usage:
+.. _tatu_command_usage:
 
-designate usage
+tatu usage
 ~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
-   usage: designate [--version] [-v | -q] [--log-file LOG_FILE] [-h] [--debug]
+   usage: tatu [--version] [-v | -q] [--log-file LOG_FILE] [-h] [--debug]
                     [--os-username OS_USERNAME] [--os-user-id OS_USER_ID]
                     [--os-user-domain-id OS_USER_DOMAIN_ID]
                     [--os-user-domain-name OS_USER_DOMAIN_NAME]
@@ -55,9 +55,9 @@ designate usage
                     [--os-service-type OS_SERVICE_TYPE] [--os-cacert OS_CACERT]
                     [--insecure] [--all-tenants] [--edit-managed]
 
-.. _designate_command_options:
+.. _tatu_command_options:
 
-designate optional arguments
+tatu optional arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``--version``
@@ -141,13 +141,13 @@ designate optional arguments
 ``--os-endpoint OS_ENDPOINT``
   Specify an endpoint to use instead of retrieving one
   from the service catalog (via authentication).
-  Defaults to ``env[OS_DNS_ENDPOINT]``.
+  Defaults to ``env[OS_SSH_ENDPOINT]``.
 
 ``--os-endpoint-type OS_ENDPOINT_TYPE``
   Defaults to ``env[OS_ENDPOINT_TYPE]``.
 
 ``--os-service-type OS_SERVICE_TYPE``
-  Defaults to ``env[OS_DNS_SERVICE_TYPE]``, or 'dns'.
+  Defaults to ``env[OS_SSH_SERVICE_TYPE]``, or 'ssh'.
 
 ``--os-cacert OS_CACERT``
   CA certificate bundle file. Defaults to
@@ -162,14 +162,14 @@ designate optional arguments
 ``--edit-managed``
   Allows to edit records that are marked as managed.
 
-.. _designate_diagnostics-ping:
+.. _tatu_diagnostics-ping:
 
-designate diagnostics-ping
+tatu diagnostics-ping
 --------------------------
 
 .. code-block:: console
 
-   usage: designate diagnostics-ping [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu diagnostics-ping [-h] [-f {html,json,shell,table,value,yaml}]
                                      [-c COLUMN] [--max-width <integer>]
                                      [--print-empty] [--noindent]
                                      [--prefix PREFIX] --service SERVICE --host
@@ -188,14 +188,14 @@ Ping a service on a given host
 ``--host HOST``
   Hostname
 
-.. _designate_domain-create:
+.. _tatu_domain-create:
 
-designate domain-create
+tatu domain-create
 -----------------------
 
 .. code-block:: console
 
-   usage: designate domain-create [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu domain-create [-h] [-f {html,json,shell,table,value,yaml}]
                                   [-c COLUMN] [--max-width <integer>]
                                   [--print-empty] [--noindent] [--prefix PREFIX]
                                   --name NAME --email EMAIL [--ttl TTL]
@@ -220,14 +220,14 @@ Create Domain
 ``--description DESCRIPTION``
   Description.
 
-.. _designate_domain-delete:
+.. _tatu_domain-delete:
 
-designate domain-delete
+tatu domain-delete
 -----------------------
 
 .. code-block:: console
 
-   usage: designate domain-delete [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu domain-delete [-h] [-f {html,json,shell,table,value,yaml}]
                                   [-c COLUMN] [--max-width <integer>]
                                   [--print-empty] [--noindent] [--prefix PREFIX]
                                   id
@@ -244,14 +244,14 @@ Delete Domain
 ``-h, --help``
   show this help message and exit
 
-.. _designate_domain-get:
+.. _tatu_domain-get:
 
-designate domain-get
+tatu domain-get
 --------------------
 
 .. code-block:: console
 
-   usage: designate domain-get [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu domain-get [-h] [-f {html,json,shell,table,value,yaml}]
                                [-c COLUMN] [--max-width <integer>]
                                [--print-empty] [--noindent] [--prefix PREFIX]
                                id
@@ -268,14 +268,14 @@ Get Domain
 ``-h, --help``
   show this help message and exit
 
-.. _designate_domain-list:
+.. _tatu_domain-list:
 
-designate domain-list
+tatu domain-list
 ---------------------
 
 .. code-block:: console
 
-   usage: designate domain-list [-h] [-f {csv,html,json,table,value,yaml}]
+   usage: tatu domain-list [-h] [-f {csv,html,json,table,value,yaml}]
                                 [-c COLUMN] [--max-width <integer>]
                                 [--print-empty] [--noindent]
                                 [--quote {all,minimal,none,nonnumeric}]
@@ -287,14 +287,14 @@ List Domains
 ``-h, --help``
   show this help message and exit
 
-.. _designate_domain-servers-list:
+.. _tatu_domain-servers-list:
 
-designate domain-servers-list
+tatu domain-servers-list
 -----------------------------
 
 .. code-block:: console
 
-   usage: designate domain-servers-list [-h]
+   usage: tatu domain-servers-list [-h]
                                         [-f {csv,html,json,table,value,yaml}]
                                         [-c COLUMN] [--max-width <integer>]
                                         [--print-empty] [--noindent]
@@ -313,14 +313,14 @@ List Domain Servers
 ``-h, --help``
   show this help message and exit
 
-.. _designate_domain-update:
+.. _tatu_domain-update:
 
-designate domain-update
+tatu domain-update
 -----------------------
 
 .. code-block:: console
 
-   usage: designate domain-update [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu domain-update [-h] [-f {html,json,shell,table,value,yaml}]
                                   [-c COLUMN] [--max-width <integer>]
                                   [--print-empty] [--noindent] [--prefix PREFIX]
                                   [--name NAME] [--email EMAIL] [--ttl TTL]
@@ -353,14 +353,14 @@ Update Domain
 
 ``--no-description``
 
-.. _designate_quota-get:
+.. _tatu_quota-get:
 
-designate quota-get
+tatu quota-get
 -------------------
 
 .. code-block:: console
 
-   usage: designate quota-get [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu quota-get [-h] [-f {html,json,shell,table,value,yaml}]
                               [-c COLUMN] [--max-width <integer>] [--print-empty]
                               [--noindent] [--prefix PREFIX]
                               tenant_id
@@ -377,14 +377,14 @@ Get Quota
 ``-h, --help``
   show this help message and exit
 
-.. _designate_quota-reset:
+.. _tatu_quota-reset:
 
-designate quota-reset
+tatu quota-reset
 ---------------------
 
 .. code-block:: console
 
-   usage: designate quota-reset [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu quota-reset [-h] [-f {html,json,shell,table,value,yaml}]
                                 [-c COLUMN] [--max-width <integer>]
                                 [--print-empty] [--noindent] [--prefix PREFIX]
                                 tenant_id
@@ -401,14 +401,14 @@ Reset Quota
 ``-h, --help``
   show this help message and exit
 
-.. _designate_quota-update:
+.. _tatu_quota-update:
 
-designate quota-update
+tatu quota-update
 ----------------------
 
 .. code-block:: console
 
-   usage: designate quota-update [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu quota-update [-h] [-f {html,json,shell,table,value,yaml}]
                                  [-c COLUMN] [--max-width <integer>]
                                  [--print-empty] [--noindent] [--prefix PREFIX]
                                  [--domains DOMAINS]
@@ -445,14 +445,14 @@ Update Quota
 ``--api-export-size API_EXPORT_SIZE``
   Allowed zone export recordsets.
 
-.. _designate_record-create:
+.. _tatu_record-create:
 
-designate record-create
+tatu record-create
 -----------------------
 
 .. code-block:: console
 
-   usage: designate record-create [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu record-create [-h] [-f {html,json,shell,table,value,yaml}]
                                   [-c COLUMN] [--max-width <integer>]
                                   [--print-empty] [--noindent] [--prefix PREFIX]
                                   --name NAME --type TYPE --data DATA [--ttl TTL]
@@ -490,14 +490,14 @@ Create Record
 ``--description DESCRIPTION``
   Description.
 
-.. _designate_record-delete:
+.. _tatu_record-delete:
 
-designate record-delete
+tatu record-delete
 -----------------------
 
 .. code-block:: console
 
-   usage: designate record-delete [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu record-delete [-h] [-f {html,json,shell,table,value,yaml}]
                                   [-c COLUMN] [--max-width <integer>]
                                   [--print-empty] [--noindent] [--prefix PREFIX]
                                   domain_id id
@@ -517,14 +517,14 @@ Delete Record
 ``-h, --help``
   show this help message and exit
 
-.. _designate_record-get:
+.. _tatu_record-get:
 
-designate record-get
+tatu record-get
 --------------------
 
 .. code-block:: console
 
-   usage: designate record-get [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu record-get [-h] [-f {html,json,shell,table,value,yaml}]
                                [-c COLUMN] [--max-width <integer>]
                                [--print-empty] [--noindent] [--prefix PREFIX]
                                domain_id id
@@ -544,14 +544,14 @@ Get Record
 ``-h, --help``
   show this help message and exit
 
-.. _designate_record-list:
+.. _tatu_record-list:
 
-designate record-list
+tatu record-list
 ---------------------
 
 .. code-block:: console
 
-   usage: designate record-list [-h] [-f {csv,html,json,table,value,yaml}]
+   usage: tatu record-list [-h] [-f {csv,html,json,table,value,yaml}]
                                 [-c COLUMN] [--max-width <integer>]
                                 [--print-empty] [--noindent]
                                 [--quote {all,minimal,none,nonnumeric}]
@@ -569,14 +569,14 @@ List Records
 ``-h, --help``
   show this help message and exit
 
-.. _designate_record-update:
+.. _tatu_record-update:
 
-designate record-update
+tatu record-update
 -----------------------
 
 .. code-block:: console
 
-   usage: designate record-update [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu record-update [-h] [-f {html,json,shell,table,value,yaml}]
                                   [-c COLUMN] [--max-width <integer>]
                                   [--print-empty] [--noindent] [--prefix PREFIX]
                                   [--name NAME] [--type TYPE] [--data DATA]
@@ -624,14 +624,14 @@ Update Record
 
 ``--no-priority``
 
-.. _designate_report-count-all:
+.. _tatu_report-count-all:
 
-designate report-count-all
+tatu report-count-all
 --------------------------
 
 .. code-block:: console
 
-   usage: designate report-count-all [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu report-count-all [-h] [-f {html,json,shell,table,value,yaml}]
                                      [-c COLUMN] [--max-width <integer>]
                                      [--print-empty] [--noindent]
                                      [--prefix PREFIX]
@@ -643,14 +643,14 @@ Get count totals for all tenants, domains and records
 ``-h, --help``
   show this help message and exit
 
-.. _designate_report-count-domains:
+.. _tatu_report-count-domains:
 
-designate report-count-domains
+tatu report-count-domains
 ------------------------------
 
 .. code-block:: console
 
-   usage: designate report-count-domains [-h]
+   usage: tatu report-count-domains [-h]
                                          [-f {html,json,shell,table,value,yaml}]
                                          [-c COLUMN] [--max-width <integer>]
                                          [--print-empty] [--noindent]
@@ -663,14 +663,14 @@ Get counts for total domains
 ``-h, --help``
   show this help message and exit
 
-.. _designate_report-count-records:
+.. _tatu_report-count-records:
 
-designate report-count-records
+tatu report-count-records
 ------------------------------
 
 .. code-block:: console
 
-   usage: designate report-count-records [-h]
+   usage: tatu report-count-records [-h]
                                          [-f {html,json,shell,table,value,yaml}]
                                          [-c COLUMN] [--max-width <integer>]
                                          [--print-empty] [--noindent]
@@ -683,14 +683,14 @@ Get counts for total records
 ``-h, --help``
   show this help message and exit
 
-.. _designate_report-count-tenants:
+.. _tatu_report-count-tenants:
 
-designate report-count-tenants
+tatu report-count-tenants
 ------------------------------
 
 .. code-block:: console
 
-   usage: designate report-count-tenants [-h]
+   usage: tatu report-count-tenants [-h]
                                          [-f {html,json,shell,table,value,yaml}]
                                          [-c COLUMN] [--max-width <integer>]
                                          [--print-empty] [--noindent]
@@ -703,14 +703,14 @@ Get counts for total tenants
 ``-h, --help``
   show this help message and exit
 
-.. _designate_report-tenant-domains:
+.. _tatu_report-tenant-domains:
 
-designate report-tenant-domains
+tatu report-tenant-domains
 -------------------------------
 
 .. code-block:: console
 
-   usage: designate report-tenant-domains [-h]
+   usage: tatu report-tenant-domains [-h]
                                           [-f {csv,html,json,table,value,yaml}]
                                           [-c COLUMN] [--max-width <integer>]
                                           [--print-empty] [--noindent]
@@ -727,14 +727,14 @@ Get a list of domains for given tenant
 ``--report-tenant-id REPORT_TENANT_ID``
   The tenant_id being reported on.
 
-.. _designate_report-tenants-all:
+.. _tatu_report-tenants-all:
 
-designate report-tenants-all
+tatu report-tenants-all
 ----------------------------
 
 .. code-block:: console
 
-   usage: designate report-tenants-all [-h] [-f {csv,html,json,table,value,yaml}]
+   usage: tatu report-tenants-all [-h] [-f {csv,html,json,table,value,yaml}]
                                        [-c COLUMN] [--max-width <integer>]
                                        [--print-empty] [--noindent]
                                        [--quote {all,minimal,none,nonnumeric}]
@@ -746,14 +746,14 @@ Get list of tenants and domain count for each
 ``-h, --help``
   show this help message and exit
 
-.. _designate_server-create:
+.. _tatu_server-create:
 
-designate server-create
+tatu server-create
 -----------------------
 
 .. code-block:: console
 
-   usage: designate server-create [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu server-create [-h] [-f {html,json,shell,table,value,yaml}]
                                   [-c COLUMN] [--max-width <integer>]
                                   [--print-empty] [--noindent] [--prefix PREFIX]
                                   --name NAME
@@ -768,14 +768,14 @@ Create Server
 ``--name NAME``
   Server name.
 
-.. _designate_server-delete:
+.. _tatu_server-delete:
 
-designate server-delete
+tatu server-delete
 -----------------------
 
 .. code-block:: console
 
-   usage: designate server-delete [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu server-delete [-h] [-f {html,json,shell,table,value,yaml}]
                                   [-c COLUMN] [--max-width <integer>]
                                   [--print-empty] [--noindent] [--prefix PREFIX]
                                   id
@@ -792,14 +792,14 @@ Delete Server
 ``-h, --help``
   show this help message and exit
 
-.. _designate_server-get:
+.. _tatu_server-get:
 
-designate server-get
+tatu server-get
 --------------------
 
 .. code-block:: console
 
-   usage: designate server-get [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu server-get [-h] [-f {html,json,shell,table,value,yaml}]
                                [-c COLUMN] [--max-width <integer>]
                                [--print-empty] [--noindent] [--prefix PREFIX]
                                id
@@ -816,14 +816,14 @@ Get Server
 ``-h, --help``
   show this help message and exit
 
-.. _designate_server-list:
+.. _tatu_server-list:
 
-designate server-list
+tatu server-list
 ---------------------
 
 .. code-block:: console
 
-   usage: designate server-list [-h] [-f {csv,html,json,table,value,yaml}]
+   usage: tatu server-list [-h] [-f {csv,html,json,table,value,yaml}]
                                 [-c COLUMN] [--max-width <integer>]
                                 [--print-empty] [--noindent]
                                 [--quote {all,minimal,none,nonnumeric}]
@@ -835,14 +835,14 @@ List Servers
 ``-h, --help``
   show this help message and exit
 
-.. _designate_server-update:
+.. _tatu_server-update:
 
-designate server-update
+tatu server-update
 -----------------------
 
 .. code-block:: console
 
-   usage: designate server-update [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu server-update [-h] [-f {html,json,shell,table,value,yaml}]
                                   [-c COLUMN] [--max-width <integer>]
                                   [--print-empty] [--noindent] [--prefix PREFIX]
                                   [--name NAME]
@@ -863,14 +863,14 @@ Update Server
 ``--name NAME``
   Server name.
 
-.. _designate_sync-all:
+.. _tatu_sync-all:
 
-designate sync-all
+tatu sync-all
 ------------------
 
 .. code-block:: console
 
-   usage: designate sync-all [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu sync-all [-h] [-f {html,json,shell,table,value,yaml}]
                              [-c COLUMN] [--max-width <integer>] [--print-empty]
                              [--noindent] [--prefix PREFIX]
 
@@ -881,14 +881,14 @@ Sync Everything
 ``-h, --help``
   show this help message and exit
 
-.. _designate_sync-domain:
+.. _tatu_sync-domain:
 
-designate sync-domain
+tatu sync-domain
 ---------------------
 
 .. code-block:: console
 
-   usage: designate sync-domain [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu sync-domain [-h] [-f {html,json,shell,table,value,yaml}]
                                 [-c COLUMN] [--max-width <integer>]
                                 [--print-empty] [--noindent] [--prefix PREFIX]
                                 domain_id
@@ -905,14 +905,14 @@ Sync a single Domain
 ``-h, --help``
   show this help message and exit
 
-.. _designate_sync-record:
+.. _tatu_sync-record:
 
-designate sync-record
+tatu sync-record
 ---------------------
 
 .. code-block:: console
 
-   usage: designate sync-record [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu sync-record [-h] [-f {html,json,shell,table,value,yaml}]
                                 [-c COLUMN] [--max-width <integer>]
                                 [--print-empty] [--noindent] [--prefix PREFIX]
                                 domain_id record_id
@@ -932,14 +932,14 @@ Sync a single Record
 ``-h, --help``
   show this help message and exit
 
-.. _designate_touch-domain:
+.. _tatu_touch-domain:
 
-designate touch-domain
+tatu touch-domain
 ----------------------
 
 .. code-block:: console
 
-   usage: designate touch-domain [-h] [-f {html,json,shell,table,value,yaml}]
+   usage: tatu touch-domain [-h] [-f {html,json,shell,table,value,yaml}]
                                  [-c COLUMN] [--max-width <integer>]
                                  [--print-empty] [--noindent] [--prefix PREFIX]
                                  domain_id

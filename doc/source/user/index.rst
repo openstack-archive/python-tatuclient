@@ -1,10 +1,10 @@
 ==============================
- Using python-designateclient
+ Using python-tatuclient
 ==============================
 
 .. toctree::
 
    bindings
-   shell-v2
+   shell-v1
    shell
    shell-examples

@@ -23,17 +23,17 @@ import fixtures
 from tempest.lib.exceptions import CommandFailed
 from testtools.runtest import MultipleExceptions
 
-from tatuclient.functionaltests.client import DesignateCLI
+from tatuclient.functionaltests.client import TatuCLI
 
 
 class BaseFixture(fixtures.Fixture):
 
     def __init__(self, user='default', *args, **kwargs):
-        """args/kwargs are forwarded to a create method on DesignateCLI"""
+        """args/kwargs are forwarded to a create method on TatuCLI"""
         super(BaseFixture, self).__init__()
         self.args = args
         self.kwargs = kwargs
-        self.client = DesignateCLI.as_user(user)
+        self.client = TatuCLI.as_user(user)
 
     def setUp(self):
         # Sometimes, exceptions are raised in _setUp methods on fixtures.
@@ -51,7 +51,7 @@ class BaseFixture(fixtures.Fixture):
 
 
 class ZoneFixture(BaseFixture):
-    """See DesignateCLI.zone_create for __init__ args"""
+    """See TatuCLI.zone_create for __init__ args"""
 
     def _setUp(self):
         super(ZoneFixture, self)._setUp()
@@ -67,13 +67,13 @@ class ZoneFixture(BaseFixture):
 
 
 class TransferRequestFixture(BaseFixture):
-    """See DesignateCLI.zone_transfer_request_create for __init__ args"""
+    """See TatuCLI.zone_transfer_request_create for __init__ args"""
 
     def __init__(self, zone, user='default', target_user='alt', *args,
                  **kwargs):
         super(TransferRequestFixture, self).__init__(user, *args, **kwargs)
         self.zone = zone
-        self.target_client = DesignateCLI.as_user(target_user)
+        self.target_client = TatuCLI.as_user(target_user)
 
         # the client has a bug such that it requires --target-project-id.
         # when this bug is fixed, please remove this
@@ -100,7 +100,7 @@ class TransferRequestFixture(BaseFixture):
 
 
 class ExportFixture(BaseFixture):
-    """See DesignateCLI.zone_export_create for __init__ args"""
+    """See TatuCLI.zone_export_create for __init__ args"""
 
     def __init__(self, zone, user='default', *args, **kwargs):
         super(ExportFixture, self).__init__(user, *args, **kwargs)
@@ -125,7 +125,7 @@ class ExportFixture(BaseFixture):
 
 
 class ImportFixture(BaseFixture):
-    """See DesignateCLI.zone_import_create for __init__ args"""
+    """See TatuCLI.zone_import_create for __init__ args"""
 
     def __init__(self, zone_file_contents, user='default', *args, **kwargs):
         super(ImportFixture, self).__init__(user, *args, **kwargs)
@@ -157,7 +157,7 @@ class ImportFixture(BaseFixture):
 
 
 class RecordsetFixture(BaseFixture):
-    """See DesignateCLI.recordset_create for __init__ args"""
+    """See TatuCLI.recordset_create for __init__ args"""
 
     def _setUp(self):
         super(RecordsetFixture, self)._setUp()
@@ -175,7 +175,7 @@ class RecordsetFixture(BaseFixture):
 
 
 class TLDFixture(BaseFixture):
-    """See DesignateCLI.tld_create for __init__ args"""
+    """See TatuCLI.tld_create for __init__ args"""
 
     def __init__(self, user='admin', *args, **kwargs):
         super(TLDFixture, self).__init__(user=user, *args, **kwargs)
@@ -194,7 +194,7 @@ class TLDFixture(BaseFixture):
 
 
 class TSIGKeyFixture(BaseFixture):
-    """See DesignateCLI.tsigkey_create for __init__ args"""
+    """See TatuCLI.tsigkey_create for __init__ args"""
 
     def __init__(self, user='admin', *args, **kwargs):
         super(TSIGKeyFixture, self).__init__(user=user, *args, **kwargs)
@@ -213,7 +213,7 @@ class TSIGKeyFixture(BaseFixture):
 
 
 class BlacklistFixture(BaseFixture):
-    """See DesignateCLI.zone_blacklist_create for __init__ args"""
+    """See TatuCLI.zone_blacklist_create for __init__ args"""
 
     def __init__(self, user='admin', *args, **kwargs):
         super(BlacklistFixture, self).__init__(user=user, *args, **kwargs)

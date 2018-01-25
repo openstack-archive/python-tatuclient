@@ -1,19 +1,19 @@
 .. _shell:
 
 =========================================================
-Designate Command Line Tool (compatible with v1 API only)
+Tatu Command Line Tool (compatible with v1 API only)
 =========================================================
 
 .. warning:: This page refers to command that use the V1 API, which is currently disabled, and will be removed in a future release
 
-The python-designateclient package comes with a command line tool (installed as :program:`designate`), this can be used to access a Designate API
+The python-tatuclient package comes with a command line tool (installed as :program:`tatu`), this can be used to access a Tatu API
 without having to manipulate JSON by hand, it can also produce the output in a variety of formats (JSON, CSV) and allow you to select columns to be
 displayed.
 
 Credentials
 -----------
 
-As with any OpenStack utility, :program:`designate` requires certain information to
+As with any OpenStack utility, :program:`tatu` requires certain information to
 talk to the REST API, username, password, auth url (from where the other required
 endpoints are retrieved once you are authenticated).
 
@@ -29,7 +29,7 @@ params, but it's easier to just set them as environment variables::
 You will also need to define the authentication url with ``--os-auth-url``
 or set is as an environment variable as well::
 
-    export OS_AUTH_URL=https://example.com:5000/v2.0/
+    export OS_AUTH_URL=https://example.com:5000/v1.0/
 
 Since Keystone can return multiple regions in the Service Catalog, you
 can specify the one you want with ``--os-region-name`` (or
@@ -38,11 +38,11 @@ can specify the one you want with ``--os-region-name`` (or
 Using the command line tool
 ---------------------------
 
-With enough details now in the environment, you can use the designate client to create a domain and populate it with some records:
+With enough details now in the environment, you can use the tatu client to create a domain and populate it with some records:
 
 .. code-block:: shell-session
 
-   $ designate domain-create --name example.com. --email admin@example.com
+   $ tatu domain-create --name example.com. --email admin@example.com
    +-------------+--------------------------------------+
    | Field       | Value                                |
    +-------------+--------------------------------------+
@@ -58,12 +58,12 @@ With enough details now in the environment, you can use the designate client to 
 
 Now that the domain has been created, we can start adding records.
 
-You'll note that the name (www.example.com) has a trailing ``.``, as per the DNS standard, we didn't set a TTL and we had to specify the parent
+You'll note that the name (www.example.com) has a trailing ``.``, as per the SSH standard, we didn't set a TTL and we had to specify the parent
 zone/domain by domain_id ``eacbe2a5-95f1-4a9f-89f5-b9c58009b163``.
 
 .. code-block:: shell-session
 
-  $  designate record-create eacbe2a5-95f1-4a9f-89f5-b9c58009b163 --name www.example.com. --type A --data 1.2.3.4
+  $  tatu record-create eacbe2a5-95f1-4a9f-89f5-b9c58009b163 --name www.example.com. --type A --data 1.2.3.4
   +-------------+--------------------------------------+
   | Field       | Value                                |
   +-------------+--------------------------------------+
@@ -122,13 +122,13 @@ touch-domain            Touch a single Domain
 
 ======================= ====================================================== ===============
 
-Builtin designate documentation
+Builtin tatu documentation
 -------------------------------
 
 You'll find complete documentation on the shell by running
-``designate --help``:
+``tatu --help``:
 
-usage: designate [--version] [-v] [--log-file LOG_FILE] [-q] [-h] [--debug]
+usage: tatu [--version] [-v] [--log-file LOG_FILE] [-q] [-h] [--debug]
                  [--os-username OS_USERNAME] [--os-user-id OS_USER_ID]
                  [--os-user-domain-id OS_USER_DOMAIN_ID]
                  [--os-user-domain-name OS_USER_DOMAIN_NAME]
@@ -145,7 +145,7 @@ usage: designate [--version] [-v] [--log-file LOG_FILE] [-q] [-h] [--debug]
                  [--os-service-type OS_SERVICE_TYPE] [--os-cacert OS_CACERT]
                  [--insecure] [--all-tenants] [--edit-managed]
 
-Designate Client
+Tatu Client
 
 optional arguments:
   --version             show program's version number and exit
@@ -200,11 +200,11 @@ optional arguments:
   --os-endpoint OS_ENDPOINT
                         Specify an endpoint to use instead of retrieving one
                         from the service catalog (via authentication).
-                        Defaults to env[OS_DNS_ENDPOINT].
+                        Defaults to env[OS_SSH_ENDPOINT].
   --os-endpoint-type OS_ENDPOINT_TYPE
                         Defaults to env[OS_ENDPOINT_TYPE].
   --os-service-type OS_SERVICE_TYPE
-                        Defaults to env[OS_DNS_SERVICE_TYPE], or 'dns'.
+                        Defaults to env[OS_SSH_SERVICE_TYPE], or 'ssh'.
   --os-cacert OS_CACERT
                         CA certificate bundle file. Defaults to
                         env[OS_CACERT].

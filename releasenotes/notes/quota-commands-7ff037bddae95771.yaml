@@ -1,6 +1,6 @@
 ---
 features:
-  - added openstack dns quota command +
+  - added openstack ssh quota command +
     list + set + reset sub commands
 
     All sub commands can be scoped to a project using --project-id

@@ -16,9 +16,9 @@
 from keystoneauth1 import adapter
 
 from tatuclient import exceptions
-from tatuclient.v2.ca import CAController
-from tatuclient.v2.hostcert import HostCeretController
-from tatuclient.v2.usercert import UserCeretController
+from tatuclient.v1.ca import CAController
+from tatuclient.v1.hostcert import HostCeretController
+from tatuclient.v1.usercert import UserCeretController
 from tatuclient import version
 
 
@@ -101,7 +101,7 @@ class Client(object):
             service_type=service_type,
             interface=endpoint_type.rstrip('URL'),
             user_agent='python-tatuclient-%s' % version.version_info,
-            version=('2'),
+            version=('1'),
             endpoint_override=endpoint_override,
             timeout=timeout,
             all_projects=all_projects,

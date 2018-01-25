@@ -15,7 +15,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 import sys
-from tatuclient.shell import DesignateShell
+from tatuclient.shell import TatuShell
 
-shell = DesignateShell()
+shell = TatuShell()
 sys.exit(shell.run(sys.argv[1:]))

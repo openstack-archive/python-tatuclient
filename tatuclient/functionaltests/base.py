@@ -20,11 +20,11 @@ from tatuclient.functionaltests import client
 from tatuclient.functionaltests import config
 
 
-class BaseDesignateTest(base.ClientTestBase):
+class BaseTatuTest(base.ClientTestBase):
 
     def _get_clients(self):
         config.read_config()
-        return client.DesignateCLI.as_user('default')
+        return client.TatuCLI.as_user('default')
 
     def ensure_tld_exists(self, tld):
         try:

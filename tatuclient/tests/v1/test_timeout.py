@@ -18,8 +18,8 @@ from keystoneauth1.identity import generic
 from keystoneauth1 import session as keystone_session
 from mock import Mock
 
-from tatuclient.tests import v2
-from tatuclient.v2.client import Client
+from tatuclient.tests import v1
+from tatuclient.v1.client import Client
 
 
 def create_session(timeout=None):
@@ -28,7 +28,7 @@ def create_session(timeout=None):
     return keystone_session.Session(auth=auth, timeout=timeout)
 
 
-class TestTimeout(v2.APIV2TestCase, v2.CrudMixin):
+class TestTimeout(v1.APIV1TestCase, v1.CrudMixin):
 
     def setUp(self):
         super(TestTimeout, self).setUp()

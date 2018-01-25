@@ -73,7 +73,7 @@ def build_flags_string(flags):
 
 
 class ZoneCommands(object):
-    """This is a mixin that provides zone commands to DesignateCLI"""
+    """This is a mixin that provides zone commands to TatuCLI"""
 
     def zone_list(self, *args, **kwargs):
         return self.parsed_cmd('zone list', ListModel, *args, **kwargs)
@@ -112,7 +112,7 @@ class ZoneCommands(object):
 
 
 class ZoneTransferCommands(object):
-    """A mixin for DesignateCLI to add zone transfer commands"""
+    """A mixin for TatuCLI to add zone transfer commands"""
 
     def zone_transfer_request_list(self, *args, **kwargs):
         cmd = 'zone transfer request list'
@@ -155,7 +155,7 @@ class ZoneTransferCommands(object):
 
 
 class ZoneExportCommands(object):
-    """A mixin for DesignateCLI to add zone export commands"""
+    """A mixin for TatuCLI to add zone export commands"""
 
     def zone_export_list(self, *args, **kwargs):
         cmd = 'zone export list'
@@ -180,7 +180,7 @@ class ZoneExportCommands(object):
 
 
 class ZoneImportCommands(object):
-    """A mixin for DesignateCLI to add zone import commands"""
+    """A mixin for TatuCLI to add zone import commands"""
 
     def zone_import_list(self, *args, **kwargs):
         cmd = 'zone import list'
@@ -344,7 +344,7 @@ class BlacklistCommands(object):
         return self.parsed_cmd(cmd, FieldValueModel, *args, **kwargs)
 
 
-class DesignateCLI(base.CLIClient, ZoneCommands, ZoneTransferCommands,
+class TatuCLI(base.CLIClient, ZoneCommands, ZoneTransferCommands,
                    ZoneExportCommands, ZoneImportCommands, RecordsetCommands,
                    TLDCommands, BlacklistCommands):
 
@@ -352,7 +352,7 @@ class DesignateCLI(base.CLIClient, ZoneCommands, ZoneTransferCommands,
     _CLIENTS = None
 
     def __init__(self, *args, **kwargs):
-        super(DesignateCLI, self).__init__(*args, **kwargs)
+        super(TatuCLI, self).__init__(*args, **kwargs)
         # grab the project id. this is used for zone transfer requests
         resp = FieldValueModel(self.openstack('token issue'))
         self.project_id = resp.project_id
@@ -370,22 +370,22 @@ class DesignateCLI(base.CLIClient, ZoneCommands, ZoneTransferCommands,
     @classmethod
     def _init_clients(cls):
         cls._CLIENTS = {
-            'default': DesignateCLI(
-                cli_dir=cfg.CONF.designateclient.directory,
+            'default': TatuCLI(
+                cli_dir=cfg.CONF.tatuclient.directory,
                 username=cfg.CONF.identity.username,
                 password=cfg.CONF.identity.password,
                 tenant_name=cfg.CONF.identity.tenant_name,
                 uri=cfg.CONF.identity.uri,
             ),
-            'alt': DesignateCLI(
-                cli_dir=cfg.CONF.designateclient.directory,
+            'alt': TatuCLI(
+                cli_dir=cfg.CONF.tatuclient.directory,
                 username=cfg.CONF.identity.alt_username,
                 password=cfg.CONF.identity.alt_password,
                 tenant_name=cfg.CONF.identity.alt_tenant_name,
                 uri=cfg.CONF.identity.uri,
             ),
-            'admin': DesignateCLI(
-                cli_dir=cfg.CONF.designateclient.directory,
+            'admin': TatuCLI(
+                cli_dir=cfg.CONF.tatuclient.directory,
                 username=cfg.CONF.identity.admin_username,
                 password=cfg.CONF.identity.admin_password,
                 tenant_name=cfg.CONF.identity.admin_tenant_name,
@@ -415,7 +415,7 @@ class DesignateCLI(base.CLIClient, ZoneCommands, ZoneTransferCommands,
         return out
 
     def _openstack_noauth(self, cmd, *args, **kwargs):
-        exe = os.path.join(cfg.CONF.designateclient.directory, 'openstack')
+        exe = os.path.join(cfg.CONF.tatuclient.directory, 'openstack')
         options = build_option_string({
             '--os-url': cfg.CONF.identity.override_endpoint,
             '--os-token': cfg.CONF.identity.override_token,

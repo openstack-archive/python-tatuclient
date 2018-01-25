@@ -1,7 +1,3 @@
-# Copyright 2015 Hewlett-Packard Development Company, L.P.
-#
-# Author: Endre Karlson <endre.karlson@hp.com>
-#
 # Licensed under the Apache License, Version 2.0 (the "License"); you may
 # not use this file except in compliance with the License. You may obtain
 # a copy of the License at
@@ -13,13 +9,19 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
-from tatuclient.tests import v2
+
+"""
+test_tatuclient
+----------------------------------
+
+Tests for `tatuclient` module.
+"""
+
+import tatuclient
+from tatuclient.tests import base
 
 
-class TestLimits(v2.APIV2TestCase, v2.CrudMixin):
-    def test_get(self):
-        ref = {"max_zones": "foo"}
-        self.stub_url("GET", parts=["limits"], json=ref)
+class ClientTestCase(base.TestCase):
 
-        limits = self.client.limits.get()
-        self.assertEqual(ref, limits)
+    def test_module_version(self):
+        self.assertTrue(hasattr(tatuclient, '__version__'))

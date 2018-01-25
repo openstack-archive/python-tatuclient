@@ -23,13 +23,13 @@ cfg.CONF.register_group(cfg.OptGroup(
 ))
 
 cfg.CONF.register_group(cfg.OptGroup(
-    name='tatuclient', title="Configuration for the Designate client"
+    name='tatuclient', title="Configuration for the Tatu client"
 ))
 
 cfg.CONF.register_opts([
-    cfg.StrOpt('uri', help="The Keystone v2 endpoint"),
+    cfg.StrOpt('uri', help="The Keystone v1 endpoint"),
     cfg.StrOpt('uri_v3', help="The Keystone v3 endpoint"),
-    cfg.StrOpt('auth_version', default='v2'),
+    cfg.StrOpt('auth_version', default='v1'),
     cfg.StrOpt('region', default='RegionOne'),
 
     cfg.StrOpt('username'),

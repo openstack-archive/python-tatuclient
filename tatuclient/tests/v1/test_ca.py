@@ -19,8 +19,8 @@ from mock import patch
 import testtools
 
 from tatuclient import exceptions
-from tatuclient.tests import v2
-from tatuclient.v2 import zones
+from tatuclient.tests import v1
+from tatuclient.v1 import zones
 
 ZONE = {
     "id": str(uuid.uuid4()),
@@ -28,7 +28,7 @@ ZONE = {
 }
 
 
-class TestRecordSets(v2.APIV2TestCase, v2.CrudMixin):
+class TestRecordSets(v1.APIV1TestCase, v1.CrudMixin):
     RESOURCE = 'recordsets'
 
     def new_ref(self, **kwargs):

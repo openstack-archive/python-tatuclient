@@ -181,7 +181,7 @@ class AdapterWithTimeout(adapter.Adapter):
     """adapter.Adapter wraps around a Session.
 
     The user can pass a timeout keyword that will apply only to
-    the Designate Client, in order:
+    the Tatu Client, in order:
 
     - timeout keyword passed to ``request()``
     - timeout keyword passed to ``AdapterWithTimeout()``

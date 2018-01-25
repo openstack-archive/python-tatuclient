@@ -1,23 +1,23 @@
-.. _shell-v2:
+.. _shell-v1:
 
-===========================
-OpenStack CLI (v2 API only)
-===========================
+=============
+OpenStack CLI
+=============
 
-The python-designateclient package comes with a plugin for the openstack
+The python-tatuclient package comes with a plugin for the openstack
 command line tool (installed as :program:`openstack`).  This can be used to
-access a Designate API without having to manipulate JSON by hand, it can also
+access a Tatu API without having to manipulate JSON by hand, it can also
 produce the output in a variety of formats (JSON, CSV) and allow you to select
 columns to be displayed.
 
 Installation
 ------------
 
-Both *python-openstackclient* and *python-designateclient* must be installed:
+Both *python-openstackclient* and *python-tatuclient* must be installed:
 
 ::
 
-    $ pip install python-openstackclient python-designateclient
+    $ pip install python-openstackclient python-tatuclient
 
 
 Configuration
@@ -72,7 +72,7 @@ With enough details now in the environment, you can use the
 Now that the zone has been created, we can start adding records.
 
 You'll note that the zone name (example.com) has a trailing ``.``, as per
-the DNS standard, and we didn't set a TTL.
+the SSH standard, and we didn't set a TTL.
 
 .. code-block:: shell-session
 
@@ -94,11 +94,11 @@ the DNS standard, and we didn't set a TTL.
   | zone_id     | 388814ef-3c5d-415e-a866-5b1d13d78dae |
   +-------------+--------------------------------------+
 
-Designate-specific Subcommands
+Tatu-specific Subcommands
 ------------------------------
 
 Aside from the ``zone create`` and ``recordset create`` subcommands, this is
-the full list of subcommands that enable Designate V2 support:
+the full list of subcommands that enable Tatu V1 support:
 
 ============================  ====================================================== ===============
 subcommand                    Notes                                                  Admin Required
@@ -149,7 +149,7 @@ tld set                       Set tld properties                                
 tld delete                    Delete tld                                             Yes
 ============================  ====================================================== ===============
 
-Built-in Designate Documentation
+Built-in Tatu Documentation
 --------------------------------
 You'll find complete documentation on the shell by running:
 ``openstack --help``
@@ -271,7 +271,7 @@ Delete a recordset:
 
 Working with PTR Records
 ''''''''''''''''''''''''
-Reverse DNS for Neutron Floating IPs can be managed with the "ptr" subcommand.
+Reverse SSH for Neutron Floating IPs can be managed with the "ptr" subcommand.
 
 Create a PTR record:
 
@@ -310,7 +310,7 @@ Delete a PTR record:
 
 Working with Zone Exports
 '''''''''''''''''''''''''
-Zone exports enable you to save Designate zone information offline.
+Zone exports enable you to save Tatu zone information offline.
 
 Create a zone export:
 
@@ -363,7 +363,7 @@ Delete zone export:
 
 Working with Zone Imports
 '''''''''''''''''''''''''
-Zone imports enable you to import a zone into Designate from a file on the filesystem.
+Zone imports enable you to import a zone into Tatu from a file on the filesystem.
 
 Create a zone import from a file:
 
@@ -461,7 +461,7 @@ Create a Zone Transfer Request
    | id                | 98ba1d22-c092-4603-891f-8a0ab04f7e57                                                   |
    | key               | J6JCET2C                                                                               |
    | links             | {u'self':                                                                              |
-   |                   | u'http://192.168.11.182:9001/v2/zones/tasks/transfer_requests/98ba1d22-c092-4603-891f- |
+   |                   | u'http://192.168.11.182:9001/v1/zones/tasks/transfer_requests/98ba1d22-c092-4603-891f- |
    |                   | 8a0ab04f7e57'}                                                                         |
    | project_id        | 10457ad1fe074f4a89bb1e4c0cd83d40                                                       |
    | status            | ACTIVE                                                                                 |
@@ -507,9 +507,9 @@ Accept a Zone Transfer Request
    | id                       | a8750f50-d7e6-403a-89d2-e209d62ef60e                                            |
    | key                      | J6JCET2C                                                                        |
    | links                    | {u'self':                                                                       |
-   |                          | u'http://192.168.11.182:9001/v2/zones/tasks/transfer_accepts/a8750f50-d7e6      |
+   |                          | u'http://192.168.11.182:9001/v1/zones/tasks/transfer_accepts/a8750f50-d7e6      |
    |                          | -403a-89d2-e209d62ef60e', u'zone':                                              |
-   |                          | u'http://192.168.11.182:9001/v2/zones/53cdcf82-9e32-4a00-a90d-32d6ec5db7e9'}    |
+   |                          | u'http://192.168.11.182:9001/v1/zones/53cdcf82-9e32-4a00-a90d-32d6ec5db7e9'}    |
    | project_id               | 10457ad1fe074f4a89bb1e4c0cd83d40                                                |
    | status                   | COMPLETE                                                                        |
    | updated_at               | 2016-05-10 05:02:52                                                             |

@@ -49,5 +49,5 @@ class CrudMixin(object):
             self.assertIn(i, actual)
 
 
-class APIV2TestCase(base.APITestCase):
-    VERSION = "2"
+class APIV1TestCase(base.APITestCase):
+    VERSION = "1"

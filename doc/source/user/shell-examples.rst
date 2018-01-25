@@ -1,16 +1,16 @@
 ====================================
-Designate Command Line Tool Examples
+Tatu Command Line Tool Examples
 ====================================
 
 .. warning:: This page refers to command that use the V1 API, which is currently disabled, and will be removed in a future release
 
 Using the client against your dev environment
 ---------------------------------------------
-Typically the designate client talks to Keystone (or a Keystone like service) via the OS_AUTH_URL setting & retrives the designate endpoint from the returned service catalog.  Using ``--os-endpoint`` or ``OS_ENDPOINT`` you can specify the end point directly, this is useful if you want to point the client at a test environment that's running without a full Keystone service.
+Typically the tatu client talks to Keystone (or a Keystone like service) via the OS_AUTH_URL setting & retrives the tatu endpoint from the returned service catalog.  Using ``--os-endpoint`` or ``OS_ENDPOINT`` you can specify the end point directly, this is useful if you want to point the client at a test environment that's running without a full Keystone service.
 
 .. code-block:: shell-session
 
-    $ designate --os-endpoint http://127.0.0.1:9001/v1 server-create --name ns.example.com.
+    $ tatu --os-endpoint http://127.0.0.1:9001/v1 server-create --name ns.example.com.
     +------------+--------------------------------------+
     | Field      | Value                                |
     +------------+--------------------------------------+
@@ -20,7 +20,7 @@ Typically the designate client talks to Keystone (or a Keystone like service) vi
     | name       | ns.example.com.                      |
     +------------+--------------------------------------+
 
-    $ designate --os-endpoint http://127.0.0.1:9001/v1 domain-create --name example.net. --email me@example.org
+    $ tatu --os-endpoint http://127.0.0.1:9001/v1 domain-create --name example.net. --email me@example.org
     +-------------+--------------------------------------+
     | Field       | Value                                |
     +-------------+--------------------------------------+
@@ -34,7 +34,7 @@ Typically the designate client talks to Keystone (or a Keystone like service) vi
     | name        | example.net.                         |
     +-------------+--------------------------------------+
 
-    $ designate --os-endpoint http://127.0.0.1:9001/v1 record-create --name myhost.example.net. --type A --data 1.2.3.4 f98c3d91-f514-4956-a955-20eefb413a64 (domain_id)
+    $ tatu --os-endpoint http://127.0.0.1:9001/v1 record-create --name myhost.example.net. --type A --data 1.2.3.4 f98c3d91-f514-4956-a955-20eefb413a64 (domain_id)
     +-------------+--------------------------------------+
     | Field       | Value                                |
     +-------------+--------------------------------------+
@@ -50,14 +50,14 @@ Typically the designate client talks to Keystone (or a Keystone like service) vi
     | name        | myhost.example.net.                  |
     +-------------+--------------------------------------+
 
-    $ designate domain-list
+    $ tatu domain-list
     +--------------------------------------+--------------+------------+
     | id                                   | name         |     serial |
     +--------------------------------------+--------------+------------+
     | 88c14ecf-b034-424c-b081-ca42494dcdf9 | example.com. | 1462372104 |
     +--------------------------------------+--------------+------------+
 
-    $ designate domain-update --email example@example.com 88c14ecf-b034-424c-b081-ca42494dcdf9 (domain_id)
+    $ tatu domain-update --email example@example.com 88c14ecf-b034-424c-b081-ca42494dcdf9 (domain_id)
     +-------------+---------------------------------------+
     | Field       | Value                                 |
     +-------------+---------------------------------------+
@@ -71,9 +71,9 @@ Typically the designate client talks to Keystone (or a Keystone like service) vi
     | name        | example.com.                          |
     +-------------+---------------------------------------+
 
-    $ designate domain-delete 88c14ecf-b034-424c-b081-ca42494dcdf9 (domain_id)
+    $ tatu domain-delete 88c14ecf-b034-424c-b081-ca42494dcdf9 (domain_id)
 
-    $ designate record-list 66584cdd-f7a6-4f0e-acf0-3dd5ad04830d (domain_id)
+    $ tatu record-list 66584cdd-f7a6-4f0e-acf0-3dd5ad04830d (domain_id)
     +--------------------------------------+------+-----------------------+-----------------------------------------------------------------+
     | id                                   | type | name                  | data                                                            |
     +--------------------------------------+------+-----------------------+-----------------------------------------------------------------+
@@ -83,7 +83,7 @@ Typically the designate client talks to Keystone (or a Keystone like service) vi
     | 7e80531d-bd65-49bc-a316-a6a06cd7fe26 | A    | example1.example.com. | 198.51.100.1                                                    |
     +--------------------------------------+------+-----------------------+-----------------------------------------------------------------+
 
-    $ designate record-update --name example1.example.com. --type A --data 198.5.100.2 --ttl 3600 66584cdd-f7a6-4f0e-acf0-3dd5ad04830d (domain-id) 7e80531d-bd65-49bc-a316-a6a06cd7fe26 (record_id)
+    $ tatu record-update --name example1.example.com. --type A --data 198.5.100.2 --ttl 3600 66584cdd-f7a6-4f0e-acf0-3dd5ad04830d (domain-id) 7e80531d-bd65-49bc-a316-a6a06cd7fe26 (record_id)
     +-------------+--------------------------------------+
     | Field       | Value                                |
     +-------------+--------------------------------------+
@@ -99,9 +99,9 @@ Typically the designate client talks to Keystone (or a Keystone like service) vi
     | name        | example1.example.com.                |
     +-------------+--------------------------------------+
 
-    $ designate record-delete 66584cdd-f7a6-4f0e-acf0-3dd5ad04830d (domain-id) 7e80531d-bd65-49bc-a316-a6a06cd7fe26 (record_id)
+    $ tatu record-delete 66584cdd-f7a6-4f0e-acf0-3dd5ad04830d (domain-id) 7e80531d-bd65-49bc-a316-a6a06cd7fe26 (record_id)
 
-    $ designate quota-get 70a4596c9974429db5fb6fe240ab87b9 (tenant_id)
+    $ tatu quota-get 70a4596c9974429db5fb6fe240ab87b9 (tenant_id)
     +-------------------+-------+
     | Field             | Value |
     +-------------------+-------+
@@ -111,7 +111,7 @@ Typically the designate client talks to Keystone (or a Keystone like service) vi
     | domain_records    | 500   |
     +-------------------+-------+
 
-    $ designate quota-update --domains 50 --domain-recordsets 1000 --recordset-records 40 --domain-records 1000 70a4596c9974429db5fb6fe240ab87b9 (tenant_id)
+    $ tatu quota-update --domains 50 --domain-recordsets 1000 --recordset-records 40 --domain-records 1000 70a4596c9974429db5fb6fe240ab87b9 (tenant_id)
     +-------------------+-------+
     | Field             | Value |
     +-------------------+-------+
@@ -121,7 +121,7 @@ Typically the designate client talks to Keystone (or a Keystone like service) vi
     | domain_records    | 1000  |
     +-------------------+-------+
 
-    $ designate quota-get 70a4596c9974429db5fb6fe240ab87b9 (tenant_id)
+    $ tatu quota-get 70a4596c9974429db5fb6fe240ab87b9 (tenant_id)
     +-------------------+-------+
     | Field             | Value |
     +-------------------+-------+

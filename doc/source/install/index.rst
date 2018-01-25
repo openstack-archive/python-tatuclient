@@ -4,12 +4,12 @@ Installation
 
 Install the client from PyPI
 ----------------------------
-The :program:`python-designateclient` package is published on `PyPI`_ and so can be installed using the pip tool, which will manage installing all
+The :program:`python-tatuclient` package is published on `PyPI`_ and so can be installed using the pip tool, which will manage installing all
 python dependencies:
 
 .. code-block:: shell-session
 
-   pip install python-designateclient
+   pip install python-tatuclient
 
 *Warning: the packages on PyPI may lag behind the git repo in functionality.*
 
@@ -19,8 +19,8 @@ If you want the latest version, straight from github:
 
 .. code-block:: shell-session
 
-    git clone git@github.com:openstack/python-designateclient.git
-    cd python-designateclient
+    git clone git@github.com:openstack/python-tatuclient.git
+    cd python-tatuclient
     virtualenv .venv
     . .venv/bin/activate
     pip install -r requirements.txt -r test-requirements.txt
@@ -34,12 +34,12 @@ step.  You can find out more about `Development Mode`_
 
 .. code-block:: shell-session
 
-    git clone git@github.com:openstack/python-designateclient.git
-    cd python-designateclient
+    git clone git@github.com:openstack/python-tatuclient.git
+    cd python-tatuclient
     virtualenv .venv
     . .venv/bin/activate
     pip install -r requirements.txt -r test-requirements.txt
     python setup.py develop
 
 .. _Development Mode: https://setuptools.readthedocs.io/en/latest/setuptools.html#development-mode
-.. _PyPI: https://pypi.python.org/pypi/python-designateclient/
+.. _PyPI: https://pypi.python.org/pypi/python-tatuclient/

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# designateclient documentation build configuration file
+# tatuclient documentation build configuration file
 
 # -- General configuration -----------------------------------------------------
 
@@ -9,8 +9,8 @@
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'openstackdocstheme']
 
 # openstackdocstheme options
-repository_name = 'openstack/python-designateclient'
-bug_project = 'python-designateclient'
+repository_name = 'openstack/python-tatuclient'
+bug_project = 'python-tatuclient'
 bug_tag = ''
 html_last_updated_fmt = '%Y-%m-%d %H:%M'
 html_theme = 'openstackdocs'
@@ -25,7 +25,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'designateclient'
+project = u'tatuclient'
 copyright = u'2012, Managed I.T. 2013-2014, Hewlett-Packard Development Company, L.P.'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -33,7 +33,7 @@ copyright = u'2012, Managed I.T. 2013-2014, Hewlett-Packard Development Company,
 # built documents.
 #
 # The short X.Y version.
-from designateclient.version import version_info as designateclient_version
+from tatuclient.version import version_info as designateclient_version
 version = designateclient_version.canonical_version_string()
 # The full version, including alpha/beta/rc tags.
 release = designateclient_version.version_string_with_vcs()
@@ -46,7 +46,7 @@ exclude_patterns = []
 pygments_style = 'sphinx'
 
 # A list of ignored prefixes for module index sorting.
-modindex_common_prefix = ['designateclient']
+modindex_common_prefix = ['tatuclient']
 
 
 # -- Options for HTML output ---------------------------------------------------

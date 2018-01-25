@@ -4,8 +4,8 @@ import logging
 from keystoneauth1.identity import generic
 from keystoneauth1 import session as keystone_session
 
-from designateclient import shell
-from designateclient.v2 import client
+from tatuclient import shell
+from tatuclient.v2 import client
 
 logging.basicConfig(level='DEBUG')
 

@@ -1,7 +1,6 @@
-#!/usr/bin/env python
-# Copyright 2012 Managed I.T.
+# Copyright 2015 Hewlett-Packard Development Company, L.P.
 #
-# Author: Kiall Mac Innes <kiall@managedit.ie>
+# Author: Endre Karlson <endre.karlson@hp.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may
 # not use this file except in compliance with the License. You may obtain
@@ -14,8 +13,13 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
-import sys
-from tatuclient.shell import DesignateShell
+from tatuclient.tests import v2
 
-shell = DesignateShell()
-sys.exit(shell.run(sys.argv[1:]))
+
+class TestLimits(v2.APIV2TestCase, v2.CrudMixin):
+    def test_get(self):
+        ref = {"max_zones": "foo"}
+        self.stub_url("GET", parts=["limits"], json=ref)
+
+        limits = self.client.limits.get()
+        self.assertEqual(ref, limits)

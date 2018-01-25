@@ -1,9 +1,9 @@
 from __future__ import print_function
 import logging
 
-from designateclient.v2 import client
-from designateclient import exceptions
-from designateclient import shell
+from tatuclient.v2 import client
+from tatuclient import exceptions
+from tatuclient import shell
 
 from keystoneauth1.identity import generic
 from keystoneauth1 import session as keystone_session

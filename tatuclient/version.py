@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # Copyright 2012 Managed I.T.
 #
 # Author: Kiall Mac Innes <kiall@managedit.ie>
@@ -14,8 +13,6 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
-import sys
-from tatuclient.shell import DesignateShell
+import pbr.version
 
-shell = DesignateShell()
-sys.exit(shell.run(sys.argv[1:]))
+version_info = pbr.version.VersionInfo('python-tatuclient')

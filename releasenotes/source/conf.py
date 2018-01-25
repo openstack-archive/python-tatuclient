@@ -42,8 +42,8 @@ extensions = [
 ]
 
 # openstackdocstheme options
-repository_name = 'openstack/python-designateclient'
-bug_project = 'python-designateclient'
+repository_name = 'openstack/python-tatuclient'
+bug_project = 'python-tatuclient'
 bug_tag = ''
 html_last_updated_fmt = '%Y-%m-%d %H:%M'
 html_theme = 'openstackdocs'

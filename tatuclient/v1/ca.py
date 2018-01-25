@@ -21,8 +21,9 @@ class CAController(V1Controller):
     def create(self, auth_id):
         return self._post('/noauth/authorities', data={ 'auth_id': auth_id })
 
-    def list(self):
-        return self._get('/noauth/authorities')
+    def list(self, criterion=None, marker=None, limit=None):
+        url = self.build_url('/noauth/authorities', criterion, marker, limit)
+        return self._get(url, response_key='CAs')
 
     def get(self, auth_id):
         return self._get('/noauth/authorities/%s' % auth_id)

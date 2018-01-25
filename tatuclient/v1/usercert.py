@@ -21,8 +21,9 @@ class UserCertController(V1Controller):
     def create(self, **kwargs):
         return self._post('/noauth/usercerts', data=kwargs)
 
-    def list(self):
-        return self._get('/noauth/usercerts')
+    def list(self, criterion=None, marker=None, limit=None):
+        url = self.build_url('/noauth/usercerts', criterion, marker, limit)
+        return self._get(url, response_key='users')
 
     def get(self, serial):
         return self._get('/noauth/usercerts/%s' % serial)

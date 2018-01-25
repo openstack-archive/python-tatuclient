@@ -17,8 +17,8 @@ from keystoneauth1 import adapter
 
 from tatuclient import exceptions
 from tatuclient.v1.ca import CAController
-from tatuclient.v1.hostcert import HostCeretController
-from tatuclient.v1.usercert import UserCeretController
+from tatuclient.v1.hostcert import HostCertController
+from tatuclient.v1.usercert import UserCertController
 from tatuclient import version
 
 

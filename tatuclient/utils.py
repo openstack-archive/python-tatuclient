@@ -101,15 +101,10 @@ def get_columns(data):
     return list(columns)
 
 
-@removals.removed_kwarg('all_tenants', removal_version='1.3.0')
-@removals.removed_kwarg('edit_managed', removal_version='1.3.0')
 def get_session(auth_url, endpoint, domain_id, domain_name, project_id,
                 project_name, project_domain_name, project_domain_id, username,
                 user_id, password, user_domain_id, user_domain_name, token,
-                insecure, cacert, all_tenants=False, edit_managed=False):
-    # NOTE: all_tenants and edit_managed are here for backwards compat
-    #       reasons, do not add additional modifiers here.
-
+                insecure, cacert):
     session = ks_session.Session()
 
     # Build + Attach Authentication Plugin
@@ -147,11 +142,6 @@ def get_session(auth_url, endpoint, domain_id, domain_name, project_id,
         session.verify = False
     else:
         session.verify = cacert
-
-    # NOTE: all_tenants and edit_managed are here for backwards compat
-    #       reasons, do not add additional modifiers here.
-    session.all_tenants = all_tenants
-    session.edit_managed = edit_managed
 
     return session
 

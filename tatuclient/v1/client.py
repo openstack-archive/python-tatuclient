@@ -34,7 +34,6 @@ class TatuAdapter(adapter.LegacyJsonAdapter):
     def __init__(self, *args, **kwargs):
         self.timeout = kwargs.pop('timeout', None)
         self.all_projects = kwargs.pop('all_projects', False)
-        self.edit_managed = kwargs.pop('edit_managed', False)
         self.sudo_project_id = kwargs.pop('sudo_project_id', None)
         super(self.__class__, self).__init__(*args, **kwargs)
 
@@ -109,5 +108,5 @@ class Client(object):
         )
 
         self.ca = CAController(self)
-        self.hostcert = HostCeretController(self)
+        self.hostcert = HostCertController(self)
         self.usercert = UserCertController(self)

@@ -84,7 +84,9 @@ class CreateUserCertCommand(command.ShowOne):
         parsed_args.user_id = client.session.get_user_id()
         parsed_args.auth_id = client.session.get_project_id()
         common.set_all_common_headers(client, parsed_args)
-        data = client.usercert.create(parsed_args)
+        data = client.usercert.create(parsed_args.user_id,
+                                      parsed_args.auth_id,
+                                      parsed_args.pub_key)
         return _names, utils.get_item_properties(data, _columns)
 
 
@@ -93,13 +95,13 @@ class RevokeUserCertCommand(command.ShowOne):
 
     def get_parser(self, prog_name):
         parser = super(RevokeUserCertCommand, self).get_parser(prog_name)
-        parser.add_argument('serial', help="Serial Number")
         parser.add_argument('auth_id', help="Project/CA ID")
+        parser.add_argument('serial', help="Serial Number")
         common.add_all_common_options(parser)
         return parser
 
     def take_action(self, parsed_args):
         client = self.app.client_manager.ssh
         common.set_all_common_headers(client, parsed_args)
-        data = client.usercert.create(parsed_args.auth_id, parsed_args.serial)
+        data = client.usercert.revoke(parsed_args.auth_id, parsed_args.serial)
         return _names, utils.get_item_properties(data, _columns)

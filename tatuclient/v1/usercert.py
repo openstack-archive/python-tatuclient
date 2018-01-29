@@ -18,8 +18,13 @@ from tatuclient.v1 import utils as v1_utils
 
 class UserCertController(V1Controller):
 
-    def create(self, **kwargs):
-        return self._post('/noauth/usercerts', data=kwargs)
+    def create(self, user_id, auth_id, pub_key):
+        data = {
+            'user_id': user_id,
+            'auth_id': auth_id,
+            'pub_key': pub_key,
+        }
+        return self._post('/noauth/usercerts', data=data)
 
     def list(self, criterion=None, marker=None, limit=None):
         url = self.build_url('/noauth/usercerts', criterion, marker, limit)

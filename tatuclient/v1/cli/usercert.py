@@ -81,11 +81,9 @@ class CreateUserCertCommand(command.ShowOne):
 
     def take_action(self, parsed_args):
         client = self.app.client_manager.ssh
-        parsed_args.user_id = client.session.get_user_id()
-        parsed_args.auth_id = client.session.get_project_id()
         common.set_all_common_headers(client, parsed_args)
-        data = client.usercert.create(parsed_args.user_id,
-                                      parsed_args.auth_id,
+        data = client.usercert.create(client.session.get_user_id(),
+                                      client.session.get_project_id(),
                                       parsed_args.pub_key)
         return _names, utils.get_item_properties(data, _columns)
 

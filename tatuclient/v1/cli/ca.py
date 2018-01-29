@@ -53,11 +53,30 @@ class ShowCACommand(command.ShowOne):
         common.add_all_common_options(parser)
         return parser
 
-    def take_action(self, parsed_args):
+    def _get_data(self, parsed_args):
         client = self.app.client_manager.ssh
         common.set_all_common_headers(client, parsed_args)
-        data = client.ca.get(parsed_args.auth_id)
+        return client.ca.get(parsed_args.auth_id)
+
+    def take_action(self, parsed_args):
+        data = self._get_data(parsed_args)
         return _names, utils.get_item_properties(data, _columns)
+
+
+class ShowCAUserKeyCommand(ShowCACommand):
+    """Print the CA's unformatted public key for user certificates."""
+
+    def take_action(self, parsed_args):
+        data = self._get_data(parsed_args)
+        self.app.stdout.write(utils.get_item_property(data, 'user_pub_key'))
+
+
+class ShowCAHostKeyCommand(ShowCACommand):
+    """Print the CA's unformatted public key for user certificates."""
+
+    def take_action(self, parsed_args):
+        data = self._get_data(parsed_args)
+        self.app.stdout.write(utils.get_item_property(data, 'host_pub_key'))
 
 
 class CreateCACommand(command.ShowOne):

@@ -24,8 +24,8 @@ from tatuclient.v1.utils import get_all
 
 LOG = logging.getLogger(__name__)
 
-_columns = ['serial', 'revoked', 'user_id', 'auth_id', 'fingerprint', 'cert']
-_names = ['Serial Number', 'Revoked', 'User ID', 'Project/CA ID', 'Fingerprint', 'SSH Certificate']
+_columns = ['serial', 'revoked', 'user_id', 'auth_id', 'fingerprint']
+_names = ['Serial Number', 'Revoked', 'User ID', 'Project/CA ID', 'Fingerprint']
 
 
 class ListUserCertCommand(command.Lister):
@@ -52,11 +52,22 @@ class ShowUserCertCommand(command.ShowOne):
         common.add_all_common_options(parser)
         return parser
 
-    def take_action(self, parsed_args):
+    def _get_data(self, parsed_args):
         client = self.app.client_manager.ssh
         common.set_all_common_headers(client, parsed_args)
-        data = client.usercert.get(parsed_args.serial)
+        return client.usercert.get(parsed_args.serial)
+
+    def take_action(self, parsed_args):
+        data = self._get_data(parsed_args)
         return _names, utils.get_item_properties(data, _columns)
+
+
+class ShowUserCertCertCommand(ShowUserCertCommand):
+    """Print the UserCert's unformatted certificate data."""
+
+    def take_action(self, parsed_args):
+        data = self._get_data(parsed_args)
+        self.app.stdout.write(utils.get_item_property(data, 'cert'))
 
 
 class CreateUserCertCommand(command.ShowOne):
@@ -64,14 +75,14 @@ class CreateUserCertCommand(command.ShowOne):
 
     def get_parser(self, prog_name):
         parser = super(CreateUserCertCommand, self).get_parser(prog_name)
-        parser.add_argument('user_id', help="User ID")
-        parser.add_argument('auth_id', help="Project/CA ID")
         parser.add_argument('pub_key', help="Public Key")
         common.add_all_common_options(parser)
         return parser
 
     def take_action(self, parsed_args):
         client = self.app.client_manager.ssh
+        parsed_args.user_id = client.session.get_user_id()
+        parsed_args.auth_id = client.session.get_project_id()
         common.set_all_common_headers(client, parsed_args)
         data = client.usercert.create(parsed_args)
         return _names, utils.get_item_properties(data, _columns)

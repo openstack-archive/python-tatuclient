@@ -69,19 +69,23 @@ def get_item_properties(item, fields, mixed_case_fields=[], formatters={}):
         if field in formatters:
             row.append(formatters[field](item))
         else:
-            if field in mixed_case_fields:
-                field_name = field.replace(' ', '_')
-            else:
-                field_name = field.lower().replace(' ', '_')
-            if not hasattr(item, field_name) and \
-                    (isinstance(item, dict) and field_name in item):
-                data = item[field_name]
-            else:
-                data = getattr(item, field_name, '')
-            if data is None:
-                data = ''
-            row.append(data)
+            row.append(get_property(item, field, mixed_case_fields))
     return tuple(row)
+
+
+def get_item_property(item, field, mixed_case_fields=[]):
+    if field in mixed_case_fields:
+        field_name = field.replace(' ', '_')
+    else:
+        field_name = field.lower().replace(' ', '_')
+    if not hasattr(item, field_name) and \
+            (isinstance(item, dict) and field_name in item):
+        data = item[field_name]
+    else:
+        data = getattr(item, field_name, '')
+    if data is None:
+        data = ''
+    return data
 
 
 def get_columns(data):

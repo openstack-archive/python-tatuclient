@@ -92,6 +92,7 @@ def get_versions():
     return dict([(ep.name, ep.plugin) for ep in mgr.extensions])
 
 
+#TODO(pino): can this be removed? Is it used anywhere?
 def Client(version, *args, **kwargs):  # noqa
     versions = get_versions()
     if version not in versions:

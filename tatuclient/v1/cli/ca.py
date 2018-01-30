@@ -63,22 +63,6 @@ class ShowCACommand(command.ShowOne):
         return _names, utils.get_item_properties(data, _columns)
 
 
-class ShowCAUserKeyCommand(ShowCACommand):
-    """Print the CA's unformatted public key for user certificates."""
-
-    def take_action(self, parsed_args):
-        data = self._get_data(parsed_args)
-        self.app.stdout.write(utils.get_item_property(data, 'user_pub_key'))
-
-
-class ShowCAHostKeyCommand(ShowCACommand):
-    """Print the CA's unformatted public key for user certificates."""
-
-    def take_action(self, parsed_args):
-        data = self._get_data(parsed_args)
-        self.app.stdout.write(utils.get_item_property(data, 'host_pub_key'))
-
-
 class CreateCACommand(command.ShowOne):
     """Create new CA"""
 

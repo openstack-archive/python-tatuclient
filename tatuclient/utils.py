@@ -69,7 +69,7 @@ def get_item_properties(item, fields, mixed_case_fields=[], formatters={}):
         if field in formatters:
             row.append(formatters[field](item))
         else:
-            row.append(get_property(item, field, mixed_case_fields))
+            row.append(get_item_property(item, field, mixed_case_fields))
     return tuple(row)
 
 

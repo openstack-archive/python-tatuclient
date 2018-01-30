@@ -24,8 +24,8 @@ from tatuclient.v1.utils import get_all
 
 LOG = logging.getLogger(__name__)
 
-_columns = ['host_id', 'srv_url', 'pat_bastions', 'fingerprint']
-_names = ['Instance ID', 'SRV URL', 'PAT Bastions', 'Fingerprint']
+_columns = ['host_id', 'hostname', 'srv_url', 'pat_bastions', 'fingerprint']
+_names = ['Instance ID', 'Hostname', 'SRV URL', 'PAT Bastions', 'Fingerprint']
 
 
 class ListHostCertCommand(command.Lister):
@@ -60,12 +60,5 @@ class ShowHostCertCommand(command.ShowOne):
 
     def take_action(self, parsed_args):
         data = self._get_data(parsed_args)
-        return _names, utils.get_item_properties(data, _columns)
-
-
-class ShowUserCertCertCommand(ShowUserCertCommand):
-    """Print the HostCert's unformatted certificate data."""
-
-    def take_action(self, parsed_args):
-        data = self._get_data(parsed_args)
-        self.app.stdout.write(utils.get_item_property(data, 'cert'))
+        return (_names + ['Certificate'],
+                utils.get_item_properties(data, _columns + ['cert']))

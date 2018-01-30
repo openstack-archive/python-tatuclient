@@ -59,15 +59,8 @@ class ShowUserCertCommand(command.ShowOne):
 
     def take_action(self, parsed_args):
         data = self._get_data(parsed_args)
-        return _names, utils.get_item_properties(data, _columns)
-
-
-class ShowUserCertCertCommand(ShowUserCertCommand):
-    """Print the UserCert's unformatted certificate data."""
-
-    def take_action(self, parsed_args):
-        data = self._get_data(parsed_args)
-        self.app.stdout.write(utils.get_item_property(data, 'cert'))
+        return (_names + ['Certificate'],
+                utils.get_item_properties(data, _columns + ['cert']))
 
 
 class CreateUserCertCommand(command.ShowOne):
@@ -85,7 +78,8 @@ class CreateUserCertCommand(command.ShowOne):
         data = client.usercert.create(client.session.get_user_id(),
                                       client.session.get_project_id(),
                                       parsed_args.pub_key)
-        return _names, utils.get_item_properties(data, _columns)
+        return (_names + ['Certificate'],
+                utils.get_item_properties(data, _columns + ['cert']))
 
 
 class RevokeUserCertCommand(command.ShowOne):

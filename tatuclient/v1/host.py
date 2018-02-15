@@ -18,8 +18,8 @@ from tatuclient.v1.base import V1Controller
 class PATController(V1Controller):
 
     def list(self, criterion=None, marker=None, limit=None):
-        url = self.build_url('/noauth/hosts', criterion, marker, limit)
+        url = self.build_url('/hosts', criterion, marker, limit)
         return self._get(url, response_key='pats')
 
     def get(self, host_id):
-        return self._get('/noauth/hosts/%s' % (host_id))
+        return self._get('/hosts/%s' % (host_id))

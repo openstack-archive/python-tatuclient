@@ -23,16 +23,16 @@ class UserCertController(V1Controller):
             'auth_id': auth_id,
             'pub_key': pub_key,
         }
-        return self._post('/noauth/usercerts', data=data)
+        return self._post('/usercerts', data=data)
 
     def list(self, criterion=None, marker=None, limit=None):
-        url = self.build_url('/noauth/usercerts', criterion, marker, limit)
+        url = self.build_url('/usercerts', criterion, marker, limit)
         return self._get(url, response_key='users')
 
     def get(self, serial):
-        return self._get('/noauth/usercerts/%s' % serial)
+        return self._get('/usercerts/%s' % serial)
 
     def revoke(self, auth_id, serial):
-        url = '/noauth/revokeduserkeys/%s' % auth_id
+        url = '/revokeduserkeys/%s' % auth_id
         data = { 'serial': serial }
         return self._post(url, data=data)

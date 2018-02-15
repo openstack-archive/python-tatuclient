@@ -18,11 +18,11 @@ from tatuclient.v1.base import V1Controller
 class CAController(V1Controller):
 
     def create(self, auth_id):
-        return self._post('/noauth/authorities', data={ 'auth_id': auth_id })
+        return self._post('/authorities', data={ 'auth_id': auth_id })
 
     def list(self, criterion=None, marker=None, limit=None):
-        url = self.build_url('/noauth/authorities', criterion, marker, limit)
+        url = self.build_url('/authorities', criterion, marker, limit)
         return self._get(url, response_key='CAs')
 
     def get(self, auth_id):
-        return self._get('/noauth/authorities/%s' % auth_id)
+        return self._get('/authorities/%s' % auth_id)

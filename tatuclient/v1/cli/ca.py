@@ -25,8 +25,8 @@ from tatuclient.v1.utils import get_all
 LOG = logging.getLogger(__name__)
 
 
-_columns = ['auth_id', 'user_pub_key', 'host_pub_key']
-_names = ['Project/CA ID', 'User Public Key', 'Host Public Key']
+_columns = ['auth_id', 'name', 'user_pub_key', 'host_pub_key']
+_names = ['Project/CA ID', 'Name', 'User Public Key', 'Host Public Key']
 
 
 class ListCACommand(command.Lister):

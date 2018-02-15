@@ -18,8 +18,8 @@ from tatuclient.v1.base import V1Controller
 class HostCertController(V1Controller):
 
     def list(self, criterion=None, marker=None, limit=None):
-        url = self.build_url('/noauth/hostcerts', criterion, marker, limit)
+        url = self.build_url('/hostcerts', criterion, marker, limit)
         return self._get(url, response_key='hosts')
 
     def get(self, host_id, fingerprint):
-        return self._get('/noauth/hostcerts/%s/%s' % (host_id, fingerprint))
+        return self._get('/hostcerts/%s/%s' % (host_id, fingerprint))

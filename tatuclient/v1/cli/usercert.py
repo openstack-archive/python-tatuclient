@@ -24,8 +24,8 @@ from tatuclient.v1.utils import get_all
 
 LOG = logging.getLogger(__name__)
 
-_columns = ['serial', 'revoked', 'user_name', 'user_id', 'fingerprint', 'created_at', 'expires_at']
-_names = ['Serial Number', 'Revoked', 'User Name', 'User ID', 'Fingerprint', 'Created', 'Expires']
+_columns = ['serial', 'principals', 'revoked', 'user_name', 'user_id', 'fingerprint', 'created_at', 'expires_at']
+_names = ['Serial Number', 'Principals', 'Revoked', 'User Name', 'User ID', 'Fingerprint', 'Created', 'Expires']
 
 
 class ListUserCertCommand(command.Lister):

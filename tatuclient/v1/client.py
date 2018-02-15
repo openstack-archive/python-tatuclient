@@ -108,5 +108,7 @@ class Client(object):
         )
 
         self.ca = CAController(self)
+        self.host = HostController
         self.hostcert = HostCertController(self)
         self.usercert = UserCertController(self)
+        self.pat = PATController(self)

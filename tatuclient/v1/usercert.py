@@ -13,7 +13,6 @@
 #   under the License.
 
 from tatuclient.v1.base import V1Controller
-from tatuclient.v1 import utils as v1_utils
 
 
 class UserCertController(V1Controller):

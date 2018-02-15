@@ -15,14 +15,8 @@
 from tatuclient.v1.base import V1Controller
 
 
-class CAController(V1Controller):
-
-    def create(self, auth_id):
-        return self._post('/noauth/authorities', data={ 'auth_id': auth_id })
+class PATController(V1Controller):
 
     def list(self, criterion=None, marker=None, limit=None):
-        url = self.build_url('/noauth/authorities', criterion, marker, limit)
-        return self._get(url, response_key='CAs')
-
-    def get(self, auth_id):
-        return self._get('/noauth/authorities/%s' % auth_id)
+        url = self.build_url('/noauth/pats', criterion, marker, limit)
+        return self._get(url, response_key='pats')

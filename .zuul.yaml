@@ -1,4 +1,0 @@
-- project:
-    name: openstack/python-tatuclient
-    templates:
-      - tatu-devstack-jobs

@@ -19,7 +19,7 @@ class HostCertController(V1Controller):
 
     def list(self, criterion=None, marker=None, limit=None):
         url = self.build_url('/hostcerts', criterion, marker, limit)
-        return self._get(url, response_key='hosts')
+        return self._get(url, response_key='certs')
 
     def get(self, host_id, fingerprint):
         return self._get('/hostcerts/%s/%s' % (host_id, fingerprint))

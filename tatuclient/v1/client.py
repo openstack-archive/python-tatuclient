@@ -16,10 +16,12 @@
 from keystoneauth1 import adapter
 
 from tatuclient import exceptions
-from tatuclient.v1.ca import CAController
-from tatuclient.v1.hostcert import HostCertController
-from tatuclient.v1.usercert import UserCertController
 from tatuclient import version
+from tatuclient.v1.ca import CAController
+from tatuclient.v1.host import HostController
+from tatuclient.v1.hostcert import HostCertController
+from tatuclient.v1.pat import PATController
+from tatuclient.v1.usercert import UserCertController
 
 
 class TatuAdapter(adapter.LegacyJsonAdapter):
@@ -108,7 +110,7 @@ class Client(object):
         )
 
         self.ca = CAController(self)
-        self.host = HostController
+        self.host = HostController(self)
         self.hostcert = HostCertController(self)
-        self.usercert = UserCertController(self)
         self.pat = PATController(self)
+        self.usercert = UserCertController(self)

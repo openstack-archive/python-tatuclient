@@ -15,11 +15,11 @@
 from tatuclient.v1.base import V1Controller
 
 
-class PATController(V1Controller):
+class HostController(V1Controller):
 
     def list(self, criterion=None, marker=None, limit=None):
         url = self.build_url('/hosts', criterion, marker, limit)
-        return self._get(url, response_key='pats')
+        return self._get(url, response_key='hosts')
 
     def get(self, host_id):
         return self._get('/hosts/%s' % (host_id))

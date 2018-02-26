@@ -27,7 +27,7 @@ class UserCertController(V1Controller):
 
     def list(self, criterion=None, marker=None, limit=None):
         url = self.build_url('/usercerts', criterion, marker, limit)
-        return self._get(url, response_key='users')
+        return self._get(url, response_key='certs')
 
     def get(self, serial):
         return self._get('/usercerts/%s' % serial)

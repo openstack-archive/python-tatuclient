@@ -26,13 +26,14 @@ LOG = logging.getLogger(__name__)
 
 
 _columns = ['IP', 'Chassis', 'LPort']
+_names = ['IP', 'Chassis', 'Neutron Port ID']
 
 
 class ListPATCommand(command.Lister):
     """List PATs"""
 
     def get_parser(self, prog_name):
-        parser = super(ListCACommand, self).get_parser(prog_name)
+        parser = super(ListPATCommand, self).get_parser(prog_name)
         common.add_all_common_options(parser)
         return parser
 
@@ -40,4 +41,4 @@ class ListPATCommand(command.Lister):
         client = self.app.client_manager.ssh
         common.set_all_common_headers(client, parsed_args)
         data = get_all(client.pat.list)
-        return _columns, (utils.get_item_properties(s, _columns) for s in data)
+        return _names, (utils.get_item_properties(s, _columns) for s in data)

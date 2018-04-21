@@ -11,11 +11,11 @@ Python bindings to the Tatu API
 =====================================
 
 .. image:: https://img.shields.io/pypi/v/python-tatuclient.svg
-    :target: https://pypi.python.org/pypi/python-tatuclient/
+    :target: https://pypi.org/project/python-tatuclient/
     :alt: Latest Version
 
 .. image:: https://img.shields.io/pypi/dm/python-tatuclient.svg
-    :target: https://pypi.python.org/pypi/python-tatuclient/
+    :target: https://pypi.org/project/python-tatuclient/
     :alt: Downloads
 
 This is a client library for Tatu built on the Tatu API. It
@@ -35,7 +35,7 @@ See release notes and more at `<https://docs.openstack.org/python-tatuclient/lat
 * `Source`_
 * `How to Contribute`_
 
-.. _PyPi: https://pypi.python.org/pypi/python-tatuclient
+.. _PyPi: https://pypi.org/project/python-tatuclient
 .. _Online Documentation: https://docs.openstack.org/python-tatuclient/latest/
 .. _Bugs: https://bugs.launchpad.net/python-tatuclient
 .. _Source: https://git.openstack.org/cgit/openstack/python-tatuclient
